@@ -1,0 +1,87 @@
+.topbar {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    height: 30px; 
+    position: sticky;
+    top: 20px;
+}
+
+.topbarWrapper {
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchWrapper {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.searchWrapper form {
+    display: inline-block;
+    padding: 0;
+}
+
+.searchWrapper input {
+    width: 300px;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.searchWrapper button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-left: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.topIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.topbarIconContainer {
+    position: relative;
+    margin-left: 20px;
+    font-size: 27px !important;
+    color: white;
+}
+
+.topIconBadge {
+    position: absolute;
+    top: -5px;
+    left: 13px;
+
+    background-color: red;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    color: white;
+}
+
+.topAvatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: -8px;
+    margin-left: 23px;
+}
