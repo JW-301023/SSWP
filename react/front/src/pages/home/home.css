@@ -1,0 +1,10 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    margin-top: 20px;
+    text-align: center;
+
+    font-family: "ClimateCrisisKR-1979";
+    font-size: 40px;
+}

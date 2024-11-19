@@ -1,0 +1,25 @@
+.chart-container {
+    background-color: #1d1d1d;
+    border-radius: 20px;
+    margin: 10px auto;
+    padding: 35px;
+    height: 300px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; /* 세로 중앙 정렬 */
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+
+canvas {
+    background-color: #1d1d1d; /* 캔버스 배경색 */
+    border-radius: 10px; /* 모서리 둥글게 */
+}
+
+.chartTitle {
+    background-color: #1d1d1d;
+    color: whitesmoke;
+    font-size: 1rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+

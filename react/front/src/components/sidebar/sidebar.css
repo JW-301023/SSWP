@@ -1,0 +1,82 @@
+.sidebar {
+    flex: 1;
+    width: 250px;
+    position: fixed;
+    left: 5px;
+    top: 7px;
+    height: 98%; 
+    border-radius: 20px;
+}
+
+
+.sidebarWrapper {
+    padding-top: 50px;
+    padding-left: 30px;
+    background-color: #1f1f1f;
+    color: white;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+.sidebarBrend {
+    height: 80px;
+    padding: 0.5rem 0rem 1rem 3rem;
+    background-color: #1f1f1f;
+    color: #ccea77;
+}
+
+
+.sidebarBrend h1 {
+    background-color: #1f1f1f;
+}
+
+ 
+.sidebarMenu {
+    background-color: #1f1f1f;
+    /* margin-bottom: 1rem; */
+}
+
+/* 
+.sidebarTitle {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #1f1f1f;
+    font-size: 0.9rem;
+    color: rgb(197, 197, 197);
+} */
+
+
+.sidebarMenu ul {
+    background-color: #1f1f1f;
+}
+
+
+.sidebarMenu li {
+    display: flex;
+    align-items: center;
+    padding-left: 1.3rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    background-color: #1f1f1f;
+}
+
+
+.sidebarMenu li.activate,
+.sidebarMenu li:hover {
+    cursor: pointer;
+    background-color: rgb(225, 254, 142);
+    color: #1f1f1f;
+    border-radius: 30px 0px 0px 30px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+
+.sidebarIcon {
+    background-color: transparent;
+    margin-right: 40px;
+    /* border-radius: 10%; */
+    font-size: 20px !important;
+}
