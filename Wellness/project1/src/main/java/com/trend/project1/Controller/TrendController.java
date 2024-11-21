@@ -1,8 +1,5 @@
 package com.trend.project1.Controller;
 
-import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
-import com.trend.project1.Entity.SearchData;
-import com.trend.project1.Repository.SearchDataRepository;
 import com.trend.project1.Service.NaverTrendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

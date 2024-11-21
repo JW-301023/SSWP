@@ -8,7 +8,6 @@ import imgLogo from "./profile.png";
 import { useNavigate } from "react-router-dom";
 
 
-
 const Topbar = () => {
     const [ searchTerm, setSearchTerm ] = useState("");
     const navigate = useNavigate();
@@ -38,6 +37,11 @@ const Topbar = () => {
             console.log(error.response);    // 에러 응답 확인
         }
     };
+
+    //로고 클릭하여 로그인 페이지로 이동
+    const handleLogoClick = () => {
+        navigate('/users');
+    }
     
     return (
         <div className="topbar">
@@ -63,7 +67,8 @@ const Topbar = () => {
                         <RiNotification4Line />
                         <span className="topIconBadge">2</span>
                     </div>
-                    <img src={imgLogo} alt="" className="topAvatar" />
+                    <img src={imgLogo} alt="" className="topAvatar" onClick={handleLogoClick}
+                    style={{cursor:"pointer"}}/>
                 </div>
             </div>
         </div>
