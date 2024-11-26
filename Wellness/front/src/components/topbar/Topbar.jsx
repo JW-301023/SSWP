@@ -26,7 +26,12 @@ const Topbar = () => {
 
         navigate(`/dashboard?keyword=${searchTerm}`);
     };
-    
+
+    //로고 클릭하여 로그인 페이지로 이동
+    const handleLogoClick = () => {
+        navigate('/users');
+    }
+
     return (
         <div className="topbar">
             <div className="topbarWrapper">
@@ -51,7 +56,9 @@ const Topbar = () => {
                         <RiNotification4Line />
                         <span className="topIconBadge">2</span>
                     </div>
-                    <img src={imgLogo} alt="" className="topAvatar" />
+                    <img src={imgLogo} alt="" className="topAvatar" onClick={handleLogoClick}
+                         style={{cursor:"pointer"}}/>
+
                 </div>
             </div>
         </div>
