@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #3f3e3e;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  margin-left: 250px; 
+  padding: 20px;
+  overflow-x: auto;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 화면 크기에 따라 자동 조정 */
+  gap: 10px;
+  padding: 20px;
+
+}
+
+@font-face {
+  font-family: 'ClimateCrisisKR-1979';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/ClimateCrisisKR-1979.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}

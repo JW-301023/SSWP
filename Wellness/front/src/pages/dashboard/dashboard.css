@@ -1,0 +1,33 @@
+.dashboard {
+    flex: 4;
+    margin-top: 5px;
+    position: relative;
+}
+
+.col {
+    display: flex;
+    position: absolute;
+    margin-top: 5px;
+    top: 0;
+    right: 0;
+    width: 230px;
+    height: 99%;
+    /* justify-content: center; */
+    
+}
+
+.widgets {
+    /* margin-left: 255; */
+    flex: 4;
+    max-width: calc(100% - 250px);
+    margin-top: 5px;
+    margin-right: auto;
+    position: relative;
+}
+
+
+.row {
+    display: flex;
+    flex: 4;
+    max-width: calc(100% - 250px);
+}
