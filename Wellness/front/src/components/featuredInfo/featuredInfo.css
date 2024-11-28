@@ -1,39 +1,40 @@
 .featured {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
     grid-gap: 20px;
-    padding: 10px;
     width: 100%;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 .barChart-container {
-    padding: 20px;
-    padding-left: 0px;
-    max-width: 500px; /* 최대 너비 */
+    padding: 10px;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     border-radius: 30px;
     background-color: #8acd9a;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-.barChart-container canvas {
-    background-color: #8acd9a;
+    overflow: hidden;
 }
 
 .pieChart-container {
-    padding: 20px;
-    padding-left: 0px;
-    max-width: 500px; /* 최대 너비 */
+    padding: 10px;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     border-radius: 30px;
     background-color: #8acd9a;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 }
 
+.barChart-container canvas,
 .pieChart-container canvas {
+    width: 100%; 
+    height: 200px;
     background-color: #8acd9a;
 }
 
@@ -42,8 +43,8 @@
     font-weight: bold;
     font-size: 0.9rem;
     margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 30px;
+    margin-bottom: 20px;
+    margin-left: 20px;
     color: #070707;
     background-color: transparent;
 }
@@ -53,11 +54,11 @@
     grid-column: 1 / -1; 
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 100%;
     height: 350px;
     padding: 20px;
     margin: 10px 0;
-    margin-left: 10px;
-    margin-bottom: 20px;
     border-radius: 30px;
     background-color: #1d1d1d;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -65,6 +66,8 @@
 }
 
 .lineContainer canvas {
+    width: 100%;
+    height: 280px;
     background-color: #1d1d1d;
 }
 

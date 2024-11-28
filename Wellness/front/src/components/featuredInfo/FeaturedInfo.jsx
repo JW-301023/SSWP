@@ -141,9 +141,7 @@ import AgesChart from "../chart/Ageschart";
                 ];
                 
                 const ageData = ageResponses.map(({ ageGroup, response }) => {
-                    const total = response[0]?.data.reduce((sum, item) => {
-                        console.log(`연령대: ${ageGroup}, 날짜: ${item.period}, 비율: ${item.ratio}`); // 디버깅
-                        if (item.ratio) return sum + item.ratio;
+                    const total = response[0]?.data.reduce((sum, item) => {                        if (item.ratio) return sum + item.ratio;
                         return sum;
                     }, 0) || 0; // 기본값 처리
 
@@ -151,14 +149,10 @@ import AgesChart from "../chart/Ageschart";
                 });
 
                 const totalSum = ageData.reduce((sum, group) => sum + group.total, 0) || 1;
-
                 const ageRatioData = ageData.map((group) => ({
                     ageGroup: group.ageGroup,
                     ratio: totalSum > 0 ? ((group.total / totalSum) * 100).toFixed(2) : "0.00", 
-                }));
-
-                // console.log("연령별 3", ageRatioData);
-                
+                }));                
             setAgesData(ageRatioData);                    
 
             } catch (err) {
@@ -178,23 +172,23 @@ import AgesChart from "../chart/Ageschart";
         <div>
             <div className="featured">
                 <div className="barChart-container">
-                    <span className="chartTitle">일별 검색량</span>
+                    <span className="chartTitle">일별 검색률</span>
                         <DailyChart data={dailyData} />
                 </div>
         
                 <div className="pieChart-container">
-                    <span className="chartTitle">성별 검색량</span>
+                    <span className="chartTitle">성별 검색률</span>
                         <GenderChart data={genderData} />
                 </div>
         
                 <div className="pieChart-container">
-                    <span className="chartTitle">연령별 검색량</span>
+                    <span className="chartTitle">연령별 검색률</span>
                         <AgesChart data={agesData} />
                 </div>
             </div>
 
             <div className="lineContainer">
-                <span className="lineTitle">월별 검색량</span>
+                <span className="lineTitle">월별 검색률</span>
                     <MonthlyChart data={monthlyData}/>
             </div>
         </div>

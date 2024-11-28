@@ -1,4 +1,5 @@
 import React from "react";
+import './ageschart.css'
 import { Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -52,7 +53,14 @@ const AgesChart = ({ data }) => {
     maintainAspectRatio: false,
     plugins: {
         legend: {
-            display: false
+            position: "right",
+            labels: {
+              font: {
+                size: 11, // 폰트 크기 (작게 설정)
+              },
+              boxWidth: 15, // 범례 박스 크기
+              padding: 10, // 범례와 텍스트 간 간격
+            },
         },
         tooltip: {
             callbacks: {

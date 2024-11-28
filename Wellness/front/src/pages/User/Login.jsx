@@ -1,14 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import './login.css'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import './login.css';
 import {useNavigate} from "react-router-dom";
-
 
 export default function Login() {
     const [userid, setUserid] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
     const navigate = useNavigate();
 
     // 이미 로그인했으면 로그인 화면 건너뛰고 홈으로 이동
@@ -37,13 +35,13 @@ export default function Login() {
             // 요청 성공 시 처리
             if (response.status === 200) {
                 alert('로그인 성공');
-                console.log('userid to be stored:', userid); // 디버깅: userid 값 확인
+                // console.log('userid to be stored:', userid); // 디버깅: userid 값 확인
                 localStorage.setItem('userid', userid); // 로컬스토리지에 사용자 정보 저장
                 navigate('/');
             }
-        } catch (error) { // 요청 실패 시 에러 처리
+        } catch (error) {
             if (error.response && error.response.status === 401) {
-                setErrorMessage('아이디 또는 비밀번호가 잘못되었습니다.');
+                setErrorMessage('로그인 실패: 아이디 또는 비밀번호를 확인하세요.');
             } else {
                 setErrorMessage('서버 오류. 다시 시도해주세요!');
             }
@@ -54,30 +52,30 @@ export default function Login() {
     return (
         <div className="login-container">
             <div className="login-box">
-                <h2>Login</h2>
+                <h1>Welcome Back!</h1>
                 {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label>ID</label>
                         <input
                             type="text"
+                            placeholder="ID"
                             value={userid}
                             onChange={(e) => setUserid(e.target.value)}
                             required
                         />
                     </div>
                     <div>
-                        <label>Password</label>
                         <input
                             type="password"
+                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </div>
-                    <button type="submit">Login</button>
+                    <button type="submit">SIGN IN</button>
                 </form>
-                <button onClick={handleSignupRedirect} type="button">Create Account</button>
+                <button onClick={handleSignupRedirect} type="button">SIGN UP</button>
             </div>
         </div>
     );

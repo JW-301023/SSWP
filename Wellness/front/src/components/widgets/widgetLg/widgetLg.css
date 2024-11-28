@@ -1,7 +1,7 @@
 .widgetLg {
-    flex: 2;
+    flex: 1.5;
     padding: 20px;
-    margin-right: 5px;
+    margin: 10px 10px;
     height: 150px;
 
     border-radius: 30px;

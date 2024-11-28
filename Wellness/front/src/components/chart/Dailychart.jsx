@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { color } from "chart.js/helpers";
+// import { color } from "chart.js/helpers";
 
 // Chart.js에 필요한 요소 등록
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -50,6 +50,7 @@ const DailyChart = ({ data }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -67,9 +68,10 @@ const DailyChart = ({ data }) => {
     scales: {
       x: {
         title: {
-          display: false,
+          display: true,
+          text: "기간 (10일단위)",
           font: {
-            size: 14,
+            size: 13,
             weight: "bold"
           },
           color: "#333"
@@ -119,8 +121,8 @@ const DailyChart = ({ data }) => {
 
 
   return (
-    <div className="daliy-container">
-        <Bar data={chartData} options={options} />
+      <div className="daily-container">
+          <Bar data={chartData} options={options} />
     </div>
   );
 };

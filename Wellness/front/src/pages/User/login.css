@@ -3,11 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-left: 350px; /* 사이드바를 고려한 조정 */
+    margin-left: 350px; 
 }
 
 .login-box {
-    background-color: #2c2f33; /* Dark */
+    background-color: #2c2f33; 
     padding: 30px 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -16,13 +16,14 @@
     max-width: 400px;
     min-width: 280px;
     margin: auto;
-    font-family: 'Arial', sans-serif; /* 글꼴 통일 */
+    font-family: 'Arial', sans-serif; 
 }
 
-.login-box h2 {
+.login-box h1 {
     margin-bottom: 20px;
     text-align: center;
-    color: #1db954; /* 메인 색상 적용 */
+    color: #1db954; 
+    background-color: #2c2f33;
     font-weight: bold;
 }
 
@@ -32,7 +33,7 @@
     margin: 10px 0;
     border: 1px solid #444;
     border-radius: 4px;
-    background-color: #1a1a1a; /* 어두운 입력 필드 */
+    background-color: #1a1a1a; 
     color: #f0f0f0;
 }
 
@@ -47,7 +48,7 @@
     margin-top: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #1db954; /* 초록색 버튼 */
+    background-color: #1db954; 
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -55,5 +56,5 @@
 }
 
 .login-box button:hover {
-    background-color: #17a34a; /* 버튼 호버 시 색상 */
+    background-color: #17a34a; 
 }
