@@ -11,7 +11,6 @@ import {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const GenderChart = ({ data }) => {
-
     // 데이터가 없을 경우 기본값 설정
     if (!data || !data.male || !data.female || data.male.length === 0 || data.female.length === 0) {
         return <p>데이터를 불러오는 중이거나 데이터가 없습니다.</p>;

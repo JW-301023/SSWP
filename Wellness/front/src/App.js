@@ -7,8 +7,8 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Signup from './pages/user/Signup';
 import PrivateRoute from './pages/user/PrivateRoute';
 import UserInfo from "./pages/user/UserInfo";
-import Login from './pages/user/Login';
-
+import LoginSlider from './pages/user/Loginslider';
+// import Login from './pages/user/Login';
 import './app.css';
 // import axios from "axios";
 
@@ -29,11 +29,8 @@ function App() {
             {/* 로그인 화면은 /login으로 이동 */}
             <Route 
               path="/login" 
-              element={
-                <div className="Login">
-                  <Login /> 
-                </div>} 
-              />
+              element={<LoginSlider />}
+            />
 
             {/* 회원 정보 화면은 PrivateRoute로 보호 */}
             {/* 로그인 화면은 로그인하지 않은 사용자만 접근 가능 */}
@@ -42,7 +39,6 @@ function App() {
                 <UserInfo />
               </PrivateRoute>
             } />
-            {/* <Route path="/main/:category" element={<div className="detail"><Sidebar /></div>} /> */}
           </Routes>    
         </div>
       </div>

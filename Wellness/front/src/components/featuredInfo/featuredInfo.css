@@ -14,28 +14,30 @@
     display: flex;
     flex-direction: column;
     border-radius: 30px;
-    background-color: #8acd9a;
+    background-color: #77D098;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     overflow: hidden;
 }
 
-.pieChart-container {
+.pieChart-container,
+.doughnutChart-container {
     padding: 10px;
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     border-radius: 30px;
-    background-color: #8acd9a;
+    background-color: #77D098;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     overflow: hidden;
 }
 
 .barChart-container canvas,
-.pieChart-container canvas {
+.pieChart-container canvas,
+.doughnutChart-container canvas {
     width: 100%; 
     height: 200px;
-    background-color: #8acd9a;
+    background-color: #77D098;
 }
 
 

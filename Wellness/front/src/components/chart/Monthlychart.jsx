@@ -1,7 +1,7 @@
 import React from "react";
 import './monthlychart.css'
 import { Line } from "react-chartjs-2";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,7 +26,11 @@ ChartJS.register(
 );
 
 const MonthlyChart = ({ data }) => {
-    const location = useLocation();
+    // const location = useLocation();
+
+    if (!data || data.length === 0) {
+        return <p>월별 데이터를 불러오는 중입니다...</p>;
+    }
     
     // 데이터 가공
     const labels = data.map((item) => item.month);

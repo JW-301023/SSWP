@@ -1,6 +1,6 @@
 import React from "react";
 import './ageschart.css'
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -51,6 +51,7 @@ const AgesChart = ({ data }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    cutout: "50%",
     plugins: {
         legend: {
             position: "right",
@@ -75,7 +76,7 @@ const AgesChart = ({ data }) => {
 
   return (
     <div className="ages-container">
-      <Pie data={chartData} options={options}/>
+      <Doughnut data={chartData} options={options}/>
     </div>
   );
 };

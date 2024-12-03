@@ -7,13 +7,14 @@ import MonthlyChart from "../chart/Monthlychart";
 import GenderChart from "../chart/Genderchart";
 import AgesChart from "../chart/Ageschart";
 
-
  const FeaturedInfo = ({ keyword }) => {
     const [dailyData, setDailyData] = useState([]);
     const [monthlyData, setMonthlyData] = useState([]);
     const [genderData, setGenderData] = useState(null);
     const [agesData, setAgesData] = useState([]);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
 
     // 현재 날짜 기준 요청 데이터 생성
     const calculateDateRange = (timeUnit) => {
@@ -28,10 +29,17 @@ import AgesChart from "../chart/Ageschart";
             const endDate = `${year}-${month}-${day}`; // 오늘 날짜
             return { startDate, endDate };
         } else if (timeUnit === "date") {
-            // 일별 데이터: 해당 월의 1일부터 현재 날짜까지
-            const startDate = `${year}-${month}-01`; // 이번 달의 1일
-            const endDate = `${year}-${month}-${day}`; // 오늘 날짜
-            return { startDate, endDate };
+            if (day <= 5) {
+                const fourWeeksAgo = new Date(now.setDate(now.getDate() - 28));
+                const startDate = fourWeeksAgo.toISOString().split("T")[0];
+                const endDate = `${year}-${month}-${day}`;
+                return { startDate, endDate }
+            } else {
+                // 일별 데이터: 해당 월의 1일부터 현재 날짜까지 \
+                const startDate = `${year}-${month}-01`; 
+                const endDate = `${year}-${month}-${day}`; // 오늘 날짜
+                return { startDate, endDate };
+            }
         }
 
         // 기본값: 전체 연도 기준
@@ -62,12 +70,17 @@ import AgesChart from "../chart/Ageschart";
             ...(type === "gender" ? { gender: value } : {}),
             ...(type === "age" ? { ages: value } : {}),
         };
-        
+
+        // 요청 데이터 로그 -> 잘됨
+        // console.log("Request Data:", requestData);
 
         try {
             const response = await axios.post("/api/trend", requestData, {
                 headers: { "Content-Type": "application/json" }
-            });
+            });    
+            
+            // 응답 데이터 로그 -> 잘됨
+            // console.log("API Response:", response.data);
 
             return response.data?.results || []; // API 응답 결과 반환
 
@@ -81,9 +94,12 @@ import AgesChart from "../chart/Ageschart";
     // 데이터 요청 및 처리
     useEffect(() => {
         const fetchData = async () => {
+            setIsLoading(true); // 로딩 시작
+
             try {
                 // 일별 데이터 요청
                 const dailyResponse = await fetchTrendData("date");
+                console.log("Daily Response from fetchParameter:", dailyResponse);
                 if (dailyResponse) {
                     const transformedData = dailyResponse[0]?.data.map((item) => ({
                         date: item.period,
@@ -94,6 +110,7 @@ import AgesChart from "../chart/Ageschart";
 
                 // 월별 데이터 요청
                 const monthlyResponse = await fetchTrendData("month");
+                console.log("Monthly Response from fetchParameter:", monthlyResponse);
                 if (monthlyResponse) {
                     const transformedMonthlyData = monthlyResponse[0]?.data.map((item) => ({
                         month: item.period, 
@@ -105,6 +122,7 @@ import AgesChart from "../chart/Ageschart";
                 // 성별 데이터 요청
                 const maleResponse = await fetchTrendData("date", "gender", "m");
                 const femaleResponse = await fetchTrendData("date", "gender", "f");
+                console.log("Gender Response from fetchParameter:", { maleResponse, femaleResponse});
                 if (maleResponse && femaleResponse) {
                     const maleData = maleResponse[0]?.data.map((item) => ({
                         date: item.period,
@@ -128,7 +146,7 @@ import AgesChart from "../chart/Ageschart";
                 const age40Response = await fetchTrendData("date", "age", ["7", "8"]);
                 const age50Response = await fetchTrendData("date", "age", ["9", "10"]);
                 const age60Response = await fetchTrendData("date", "age", ["11"]);
-
+                console.log("Age fetchParameter:", age10Response);
                 
                 // 데이터 가공
                 const ageResponses = [
@@ -158,15 +176,26 @@ import AgesChart from "../chart/Ageschart";
             } catch (err) {
                 console.error("데이터 요청 실패: ", err);
                 setError("데이터 요청에 실패했습니다.");
-            }
+            } finally {
+                setIsLoading(false); // 로딩 종료
+            }          
         };
-      
+   
         fetchData();
     }, [keyword]);
 
     if (error) {
         return <p>{error}</p>;
     }
+
+    if (isLoading) {
+        return <p>데이터를 불러오는 중입니다...</p>;
+    }
+
+    // console.log("Daily Data: ", dailyData);
+    // console.log("Monthly Data: ", monthlyData);
+    // console.log("Gender Data: ", genderData);
+    // console.log("Ages Data: ", agesData);   
     
     return (
         <div>
@@ -181,7 +210,7 @@ import AgesChart from "../chart/Ageschart";
                         <GenderChart data={genderData} />
                 </div>
         
-                <div className="pieChart-container">
+                <div className="doughnutChart-container">
                     <span className="chartTitle">연령별 검색률</span>
                         <AgesChart data={agesData} />
                 </div>

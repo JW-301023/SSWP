@@ -1,0 +1,315 @@
+/* 전체 컨테이너 스타일 */
+.slider-container {
+    position: relative;
+    width: 900px;
+    height: 600px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 30px;
+    /* transition: all 0.6s ease-in-out; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 오버레이 ------------------------------------------------ */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; 
+    /* opacity: 1;
+    visibility: visible; */
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+/* 오버레이 숨기기 */
+/* .overlay-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+} */
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: all 0.6s ease-in-out;
+}
+
+
+.overlay-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 85px;
+    transition: opacity 0.6s ease, visibility 0.6s ease,transform 0.6s ease;
+}
+
+/* 숨김 처리 */
+.overlay-panel.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* transform: translateX(-50%); */
+}
+
+/* 왼쪽 오버레이 */
+.overlay-panel.overlay-left {
+    background-color: #1f1f1f;
+    color: white;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* 오른쪽 오버레이 */
+.overlay-panel.overlay-right {
+    background-color: #DAFF7C;
+    color: black;
+    z-index: 15; /* 적절히 높게 설정 */
+    transform: translateX(50);
+}
+
+/* 항상 보이는 상태 */
+.overlay-panel:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateX(0);
+}
+
+
+.overlay-panel h3 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 60px;
+    background-color: transparent;
+}
+
+.overlay-panel p {
+    font-size: 16px;
+    background-color: transparent;
+}
+
+.overlay-panel .btn.transparent {
+    border: 2px solid #ddd;
+    color: #ddd;
+    font-size: 14px;
+    padding: 10px 50px;
+    margin-bottom: 60px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.overlay-right .btn.transparent {
+    border: 2px solid #1f1f1f;
+    color: #1f1f1f;
+    font-size: 14px;
+    padding: 10px 50px;
+    margin-bottom: 60px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.overlay-panel .btn.transparent:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+/* 입력폼 컨테이너 -------------------------------------------- */
+.forms-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    visibility: hidden; 
+    opacity: 0;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.forms-container.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.sign-in-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+    background-color: #1f1f1f;
+}
+
+.sign-up-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+    background-color: white;
+    transform: translateX(100%); /* 오른쪽에 배치 */
+    background-color: #DAFF7C;
+}
+
+.active .sign-in-container,
+.active .sign-up-container {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* .active {
+    background-color: #DAFF7C;
+} */
+
+.sign-in-form {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    gap: 50px;
+    border-radius: 10px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.sign-up-form {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    gap: 40px;
+    border-radius: 10px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+.sign-in-form h3,
+.sign-up-form h3 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+
+.sign-in-form input {
+    width: 70%;
+    margin: -15px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+    color: #ddd;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.sign-up-form input {
+    width: 70%;
+    margin: -15px;
+    padding: 15px 20px;
+    border: 1px solid #1f1f1f;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+    color: #1f1f1f;
+}
+
+.sign-in-form input:focus {
+    outline: none;
+    border-color: #DAFF7C;
+}
+
+.sign-up-form input:focus {
+    outline: none;
+    border-color: #9481FF;
+}
+
+.sign-in-form .btn {
+    font-size: 14px;
+    padding: 10px 50px;
+    border-radius: 20px;
+    border: 2px solid #DAFF7C;
+    border-radius: 20px;
+    background-color: #DAFF7C;
+    color: #1f1f1f;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.sign-up-form .btn {
+    font-size: 14px;
+    padding: 10px 50px;
+    border-radius: 20px;
+    border: 2px solid #9481FF;
+    border-radius: 20px;
+    background-color: #9481FF;
+    color: #ddd;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: #1f1f1f;
+}
+
+.error-message {
+    background-color: transparent;
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .slider-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .overlay {
+        grid-template-columns: 1fr;
+    }
+
+    .overlay-panel.overlay-left,
+    .overlay-panel.overlay-right {
+        flex-direction: column;
+    }
+}

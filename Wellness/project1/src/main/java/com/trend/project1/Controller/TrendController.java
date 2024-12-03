@@ -5,12 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TrendController {
 
     @Autowired
@@ -31,10 +34,11 @@ public class TrendController {
             return ResponseEntity.badRequest().body("Invalid keywords: cannot be empty strings");
         }
 
-
         String response = naverTrendService.fetchNaverTrendData(requestData);
-        return ResponseEntity.ok(response); // 응답을 그대로 반환
+
+        return ResponseEntity.ok(response);
     }
+
 
     @GetMapping("/categories")
     public List<String> getCategories() {
