@@ -1,0 +1,195 @@
+.post-detail-container {
+    width: 600px; /* 본문 전체 너비 사용 */
+    height: 600px; /* 높이를 키움 */
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+    border: 3px solid #ccea77;
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    align-items: center; /* 가운데 정렬 */
+}
+
+/* 제목 스타일 */
+.post-detail-container h1 {
+    font-size: 2rem;
+    color: #f0f0f0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 작성자, 조회수 */
+.post-meta {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* 작성자와 조회수 간격 추가 */
+}
+
+/* 본문 스타일 */
+.post-content {
+    margin-top: 20px;
+    padding: 20px; /* 패딩을 키워 박스 안쪽 여백을 늘림 */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    width: 100%; /* 본문 전체 너비 사용 */
+    height: 400px; /* 높이를 키움 */
+    box-sizing: border-box; /* 패딩 포함 */
+    display: flex;
+    align-items: center; /* 내용 세로 정렬 */
+    justify-content: center; /* 내용 가로 정렬 */
+    color: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 100px;
+}
+/* 생성일 스타일 */
+.post-date {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* 버튼 스타일 */
+.post-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+    color: #f44336;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.like-button:hover {
+    color: #d32f2f;
+}
+
+/*.post-detail-container h1 {*/
+/*    font-size: 2.5rem;*/
+/*    !*font-weight: bold;*!*/
+/*    color: white;*/
+/*    margin-bottom: 20px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.post-detail-container p {*/
+/*    font-size: 1.2rem;*/
+/*    line-height: 1.8;*/
+/*    margin: 50px 0;*/
+/*}*/
+
+/*.post-detail-container p strong {*/
+/*    font-weight: bold;*/
+/*    color: #555;*/
+/*}*/
+
+/*.post-detail-container .post-content {*/
+/*    margin-top: 20px;*/
+/*    padding: 15px;*/
+/*    !*background-color: #fff;*!*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid #ddd;*/
+/*    color: white;*/
+/*    width: 100%; !* 본문 전체 너비 사용 *!*/
+/*    box-sizing: border-box; !* 패딩 포함 *!*/
+/*}*/
+
+/*.post-detail-container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin-top: 50px; !* 위, 아래 띄어진 정도 *!*/
+/*    margin-left: 50px;*/
+/*}*/
+
+/*.post-detail-container {*/
+/*    font-size: 1.1rem;*/
+/*    font-weight: bold;*/
+/*    color: #666;*/
+/*}*/
+
+/*.post-actions {*/
+/*    display: flex;*/
+/*    gap: 10px;*/
+/*    margin-top: 30px;*/
+/*}*/
+
+.edit-button,
+.delete-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+
+/*.post-detail-container .back-button {*/
+/*    display: block;*/
+/*    margin: 20px auto;*/
+/*    padding: 10px 20px;*/
+/*    background-color: #666;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*    text-align: center;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.post-detail-container .back-button:hover {*/
+/*    background-color: #76a62f;*/
+/*}*/
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+

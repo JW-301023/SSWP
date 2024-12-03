@@ -4,15 +4,20 @@ import Topbar from './components/topbar/Topbar';
 import Sidebar from './components/sidebar/Sidebar';
 import Home from './pages/home/Home';
 import Dashboard from './pages/dashboard/Dashboard';
-import Signup from './pages/user/Signup';
 import PrivateRoute from './pages/user/PrivateRoute';
 import UserInfo from "./pages/user/UserInfo";
 import LoginSlider from './pages/user/Loginslider';
+import Community from "./pages/Community/Community";
+import CreatePost from "./pages/Community/CreatePost";
+import PostDetail from "./pages/Community/PostDetail";
+import EditPost from "./pages/Community/EditPost";
+
 // import Login from './pages/user/Login';
 import './app.css';
 // import axios from "axios";
 
 function App() {
+  const userid = localStorage.getItem('userid');
   return (
     <Router>
       <div className="App">
@@ -23,8 +28,17 @@ function App() {
             <Route path="/" element={<div className="home"><Home /></div>} />
 
             <Route path="/dashboard" element={<div className="dashboard"><Dashboard /></div>} />
+            <Route path="/community" element={<div className="Community"><Community/></div>}/>
+            <Route path="/community/:id" element={<div className="PostDetail"> <PostDetail/></div>}/>
+            <Route path="/community/edit/:id" element={<div className="EditPost"><EditPost/></div>} />
 
-            <Route path="/signup" element={<div className="Signup"><Signup /></div>} />
+            {/* 로그인한 사용자만 접근 가능 */}
+            <Route path="/create"
+                   element={
+                     <PrivateRoute>
+                       <div className="CreatePost"><CreatePost/></div>
+                     </PrivateRoute>}
+            />
 
             {/* 로그인 화면은 /login으로 이동 */}
             <Route 

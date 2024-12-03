@@ -15,7 +15,7 @@
 .container {
   display: flex;
   flex: 1;
-  margin-left: 250px; 
+  margin-left: 250px;
   padding: 20px;
   overflow-x: auto;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 화면 크기에 따라 자동 조정 */

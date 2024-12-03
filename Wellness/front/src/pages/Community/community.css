@@ -1,0 +1,185 @@
+/*.community-container {*/
+/*    margin: 50px auto;*/
+/*    width: 100%;*/
+/*    display: flex; !* Flexbox로 정렬 *!*/
+/*    flex-direction: column; !* 세로 배치 *!*/
+/*    align-items: center; !* 가로 가운데 정렬 *!*/
+/*}*/
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.community-container {
+    width: 100%; /* 사이드바 너비를 제외한 공간 */
+    margin-left: 250px; /* 사이드바 너비만큼 이동 */
+    padding: 20px; /* 여백 추가 */
+    box-sizing: border-box; /* 패딩을 포함한 너비 계산 */
+    height: 100vh; /* 화면 전체 높이를 사용 */
+    overflow-y: auto; /* 화면이 넘칠 경우 스크롤 활성화 */
+}
+
+.community-header {
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    /*align-items: center; !* 왼쪽 정렬 *!*/
+    gap: 20px; /* 각 항목 간격 */
+    width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
+.community-header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ccea77;
+    text-align: center; /* 텍스트 가로 정렬 */
+    margin-bottom: 10px;
+}
+
+/*.search-bar {*/
+/*    display: flex; !* 가로로 검색창과 버튼 배치 *!*/
+/*    justify-content: center; !* 검색창 가로 가운데 정렬 *!*/
+/*    align-items: center; !* 검색창 세로 가운데 정렬 *!*/
+/*    margin-top: 50px; !* Wellty 제목과의 간격 *!*/
+/*    gap: 10px; !* 입력창과 버튼 간 간격 *!*/
+/*    width: 80%; !* 검색창이 차지하는 너비 *!*/
+/*}*/
+
+.search-bar {
+    display: flex;
+    justify-content: flex-end; /* 우측 끝으로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%; /* 전체 너비를 사용 */
+    /*margin-bottom: 1px;*/
+}
+
+.search-bar input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+    color: white;
+}
+
+.search-bar button {
+    /*background-color: #ff9800;*/
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.category-filter {
+    width: 100%;
+    display: flex;
+    gap: 70px; /* 항목 간격 */
+    justify-content: flex-start; /* 카테고리 가운데 정렬 */
+    margin-left: 200px;
+    padding-bottom: 10px;
+}
+
+.category-item {
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #f0f0f0;
+}
+
+.category-item:hover {
+    color: #ff9800; /* 마우스 오버 시 강조 */
+}
+
+.category-item.active {
+    font-weight: bold;
+    color: #ff9800; /* 선택된 카테고리 강조 */
+    border-bottom: 2px solid #ff9800;
+}
+
+.community-header .search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.post-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.post-table th,
+.post-table td {
+    border-top: 0.5px solid #f0f0f0; /* 구분선 */
+    padding: 15px 10px;
+    text-align: center;
+}
+
+.post-table th {
+    /*background-color: #5f5f5f;*/
+    font-weight: bold;
+}
+
+.post-table tr {
+    background-color: #f1f1f1;
+    color: white;
+}
+
+.post-table tbody tr {
+    height: 65px; /* 칸마다 높이를 70px로 설정*/
+}
+
+.post-table th:nth-child(3), /* 제목 열 헤더 */
+.post-table td:nth-child(3) { /* 제목 열 데이터 */
+    width: 30%; /* 너비를 40%로 설정 (조정 가능) */
+    word-wrap: break-word; /* 긴 텍스트 줄바꿈 */
+}
+
+.write-button-container {
+    display: flex; /* Flexbox로 설정 */
+    justify-content: flex-end; /* 버튼을 오른쪽 끝으로 정렬 */
+    margin-top: 20px; /* 버튼 위 여백 */
+}
+
+
+.write-button {
+    display: block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #8dc63f;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.write-button:hover {
+    background-color: #17a34a;
+}
