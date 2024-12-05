@@ -8,7 +8,7 @@ import PrivateRoute from './pages/user/PrivateRoute';
 import UserInfo from "./pages/user/UserInfo";
 import LoginSlider from './pages/user/Loginslider';
 import Community from "./pages/Community/Community";
-import CreatePost from "./pages/Community/CreatePost";
+import CreatePostModal from "./pages/Community/CreatePostModal";
 import PostDetail from "./pages/Community/PostDetail";
 import EditPost from "./pages/Community/EditPost";
 
@@ -36,7 +36,7 @@ function App() {
             <Route path="/create"
                    element={
                      <PrivateRoute>
-                       <div className="CreatePost"><CreatePost/></div>
+                       <div className="CreatePostModal"><CreatePostModal/></div>
                      </PrivateRoute>}
             />
 

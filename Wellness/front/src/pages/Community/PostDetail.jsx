@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useNavigate, useParams, useLocation} from "react-router-dom";
 import axios from "axios";
 import "./postdetail.css";
+import Comments from "./Comments";
 
 const PostDetail = () => {
     const { id } = useParams(); // URL에서 게시글 ID 가져오기
@@ -110,6 +111,7 @@ const PostDetail = () => {
             <button className="back-button" onClick={() => navigate("/community", {state: {category}})}>
                 Back
             </button>
+            <Comments postId={post.id} postName={post.name} />
         </div>
     );
 };

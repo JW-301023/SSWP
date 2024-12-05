@@ -2,27 +2,30 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./community.css";
 import {useNavigate} from "react-router-dom";
+import CreatePostModal from "./CreatePostModal"; // 모달 컴포넌트 추가
 
 const Community = () => {
     const [posts, setPosts] = useState([]); // 게시물 데이터 저장 및 관리 데이터
     const [category, setCategory] = useState("ALL"); // 선택된 카테고리 (초기값(ALL)
     const [searchTerm, setSearchTerm] = useState(""); // 검색어 (초기값 빈 문자열)
+    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
     const navigate = useNavigate();
 
     // 게시물 데이터 가져오기
+    const fetchPosts = async () => {
+        try {
+            const response = await axios.get(
+                category === "ALL"
+                    ? "/api/posts"
+                    : `/api/posts/category/${category}`
+            );
+            setPosts(response.data);
+        } catch (error) {
+            console.error("게시글 데이터를 가져오는 중 오류 발생:", error);
+        }
+    };
+
     useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const response = await axios.get(
-                    category === "ALL" // "ALL"이면 모든 게시글 가져오기
-                        ? "/api/posts" // 모든 게시글 엔드포인트
-                        : `/api/posts/category/${category}` // 특정 카테고리 게시글 엔드포인트
-                );
-                setPosts(response.data);
-            } catch (error) {
-                console.error("게시글 데이터를 가져오는 중 오류 발생:", error);
-            }
-        };
         fetchPosts();
     }, [category]);
 
@@ -49,10 +52,27 @@ const Community = () => {
         }
     };
 
+    // 모달 열기/닫기
+        const handleOpenModal = () => {
+            const userId = localStorage.getItem("userid");
+            if (!userId) {
+                alert("로그인이 필요합니다.");
+                navigate("/login", { state: { redirectTo: "/community" } });
+            } else {
+                setIsModalOpen(true);
+            }
+        };
+
+        const handleCloseModal = () => {
+            setIsModalOpen(false);
+            // 모달이 닫힌 후 게시글 갱신
+            fetchPosts();
+        };
+
     return (
         <div className="community-container">
             <div className="community-header">
-                <h1>Wellty</h1>
+                <h1>Wellty Community</h1>
 
                 {/* 카테고리 필터 */}
                 <div className="category-filter">
@@ -79,7 +99,7 @@ const Community = () => {
                 </div>
 
                 {/* 게시물 테이블 */}
-                <table className="post-table">
+                <table className={`post-table ${category !== "ALL" ? "category-hidden" : ""}`}>
                     <thead>
                     <tr>
                         <th>No</th>
@@ -108,12 +128,17 @@ const Community = () => {
 
                 {/* 글쓰기 버튼 */}
                 <div className="write-button-container">
-                    <button className="write-button" onClick={() => navigate("/create")}>
-                        Click your thoughts
+                    <button className="write-button" onClick={handleOpenModal}>
+                        Click Your Thoughts
                     </button>
                 </div>
-
             </div>
+            {/* CreatePostModal */}
+            <CreatePostModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onSubmit={handleCloseModal}
+            />
         </div>
     );
 };

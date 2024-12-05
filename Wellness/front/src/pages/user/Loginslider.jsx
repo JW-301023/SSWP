@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import "./loginslider.css";
 
 export default function LoginSlider() {
@@ -11,7 +11,7 @@ export default function LoginSlider() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
-
+    const location = useLocation(); // 이전 경로 가져오기
 
     // const toggleMode = () => {
     //     setIsSignUp(!isSignUp);
@@ -20,15 +20,17 @@ export default function LoginSlider() {
     //     setPassword(""); 
     //     setConfirmPassword("");
     // };
-    
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post("http://localhost:8080/api/login", { userid, password });
             if (response.status === 200) {
                 alert("로그인 성공");
-                localStorage.setItem("userid", userid); 
-                navigate("/");
+                localStorage.setItem("userid", userid);
+
+                // 리다이렉션 경로 확인
+                const redirectTo = location.state?.redirectTo || "/"; // 없으면 홈 화면
+                navigate(redirectTo);
             }
         } catch (error) {
             if (error.response && error.response.status === 401) {
@@ -53,7 +55,7 @@ export default function LoginSlider() {
             if (error.response && error.response.status === 409) {
                 setErrorMessage("이미 존재하는 아이디입니다.");
             } else if (error.response && error.response.status === 400) {
-                setErrorMessage("입력 값이 유효하지 않습니다.");
+                setErrorMessage("입력값이 유효하지 않습니다.");
             }
         }
     };

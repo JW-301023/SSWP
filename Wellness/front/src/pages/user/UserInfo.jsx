@@ -12,9 +12,9 @@ export default function UserInfo() {
 
     return (
         <div className="user-info">
-            <h2>회원 정보</h2>
-            <p>환영합니다, {userid}님!</p>
-            <button onClick={handleLogout}>로그아웃</button>
+            <h2>User Info</h2>
+            <p> Welcome😉 {userid}님</p>
+            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 }

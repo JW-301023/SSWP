@@ -142,3 +142,7 @@ public class PostController {
         return ResponseEntity.ok("좋아요 성공");
     }
 }
+
+
+
+

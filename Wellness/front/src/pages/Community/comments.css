@@ -1,0 +1,143 @@
+.comments-container {
+    margin-top: 120px;
+    padding: 20px;
+    border: 1px solid #ccea77;
+    border-radius: 8px;
+    color: #ccea77;
+    width: 100%;
+    height: 100%;
+}
+
+/*.comments-container h2{*/
+/*    text-align: left;*/
+/*}*/
+
+.comments-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-item {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-header {
+    display: flex;
+    /*justify-content: space-between;*/
+    font-weight: bold;
+    gap: 10px;
+}
+
+.name-label {
+    margin-left: 5px;
+    color: #007bff;
+    font-size: 0.9rem;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.comment-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-top: 1px; /* 헤더와 본문 사이 여백 */
+    /*line-height: 1.5; !* 텍스트 간격 조정 *!*/
+}
+
+.comment-content {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    gap: 20px;
+}
+
+.reply-button {
+    background-color: transparent;
+    color: #9481FF;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px; /* 답글 버튼을 아래로 내림 */
+}
+
+.comment-time {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.comment-delete-button {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.comment-input {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: none;
+    color: white;
+}
+
+.comment-submit-button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background-color: #9481FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-submit-button:hover {
+    background-color: #0056b3;
+}
+
+.edit-textarea {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+    color: white;
+}
+
+.comment-edit-button,
+.comment-save-button {
+    /*background-color: #4caf50;*/
+    color: #9481FF;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
