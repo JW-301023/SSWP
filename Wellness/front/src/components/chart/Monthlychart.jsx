@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './monthlychart.css'
 import { Line } from "react-chartjs-2";
+import PropagateLoader from "react-spinners/PropagateLoader";
 // import { useLocation } from "react-router-dom";
 import {
   Chart as ChartJS,
@@ -10,7 +11,7 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend, 
   Filler
 } from "chart.js";
 
@@ -26,11 +27,24 @@ ChartJS.register(
 );
 
 const MonthlyChart = ({ data }) => {
-    // const location = useLocation();
+    const [loading, setLoading] = useState(true);
 
-    if (!data || data.length === 0) {
-        return <p>월별 데이터를 불러오는 중입니다...</p>;
-    }
+    useEffect(() => {
+        if (data && data.length > 0) {
+            setLoading(false); // 데이터가 있으면 로딩을 종료
+        } else {
+            setLoading(true); // 데이터가 없으면 로딩
+        }
+    }, [data]);
+
+    // if (loading || !keyword) {
+    //     return (
+    //         <div className="loading-container">
+    //             <div className="loading-overlay"></div> {/* 화면 흐림 효과 */}
+    //             <PropagateLoader color="#C5EB64" size={25} />
+    //         </div>
+    //     );
+    // }
     
     // 데이터 가공
     const labels = data.map((item) => item.month);

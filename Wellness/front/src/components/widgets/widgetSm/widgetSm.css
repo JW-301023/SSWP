@@ -1,4 +1,4 @@
-.widgetSm {
+.widgetSm-containter {
     flex: 1;
     padding: 20px;
     margin: 10px 10px;
@@ -11,7 +11,7 @@
     background-color: #9481FF;
 }
 
-.title {
+.sm-title {
     background-color: transparent;
     font-weight: bold;
     font-size: 0.9rem;

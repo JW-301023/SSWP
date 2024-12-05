@@ -99,7 +99,6 @@ import AgesChart from "../chart/Ageschart";
             try {
                 // 일별 데이터 요청
                 const dailyResponse = await fetchTrendData("date");
-                console.log("Daily Response from fetchParameter:", dailyResponse);
                 if (dailyResponse) {
                     const transformedData = dailyResponse[0]?.data.map((item) => ({
                         date: item.period,
@@ -110,7 +109,6 @@ import AgesChart from "../chart/Ageschart";
 
                 // 월별 데이터 요청
                 const monthlyResponse = await fetchTrendData("month");
-                console.log("Monthly Response from fetchParameter:", monthlyResponse);
                 if (monthlyResponse) {
                     const transformedMonthlyData = monthlyResponse[0]?.data.map((item) => ({
                         month: item.period, 
@@ -122,7 +120,6 @@ import AgesChart from "../chart/Ageschart";
                 // 성별 데이터 요청
                 const maleResponse = await fetchTrendData("date", "gender", "m");
                 const femaleResponse = await fetchTrendData("date", "gender", "f");
-                console.log("Gender Response from fetchParameter:", { maleResponse, femaleResponse});
                 if (maleResponse && femaleResponse) {
                     const maleData = maleResponse[0]?.data.map((item) => ({
                         date: item.period,
@@ -146,7 +143,7 @@ import AgesChart from "../chart/Ageschart";
                 const age40Response = await fetchTrendData("date", "age", ["7", "8"]);
                 const age50Response = await fetchTrendData("date", "age", ["9", "10"]);
                 const age60Response = await fetchTrendData("date", "age", ["11"]);
-                console.log("Age fetchParameter:", age10Response);
+                
                 
                 // 데이터 가공
                 const ageResponses = [
@@ -199,7 +196,7 @@ import AgesChart from "../chart/Ageschart";
     
     return (
         <div>
-            <div className="featured">
+            <div className="featured-container">
                 <div className="barChart-container">
                     <span className="chartTitle">일별 검색률</span>
                         <DailyChart data={dailyData} />
@@ -216,9 +213,11 @@ import AgesChart from "../chart/Ageschart";
                 </div>
             </div>
 
-            <div className="lineContainer">
-                <span className="lineTitle">월별 검색률</span>
-                    <MonthlyChart data={monthlyData}/>
+            <div className="another-container">
+                <div className="lineChart-container">
+                    <span className="lineTitle">월별 검색률</span>
+                        <MonthlyChart data={monthlyData}/>
+                </div>
             </div>
         </div>
     );

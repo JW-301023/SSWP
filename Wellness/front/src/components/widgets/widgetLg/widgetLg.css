@@ -1,4 +1,4 @@
-.widgetLg {
+.widgetLg-container {
     flex: 1.5;
     padding: 20px;
     margin: 10px 10px;
@@ -8,9 +8,25 @@
     background-color: #C5EB64;
 }
 
-.title {
+.widgetLg-title {
     font-weight: bold;
     font-size: 0.9rem;
     color: #070707;
     background-color: transparent;
+}
+
+.relatedList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.relatedList li {
+    background-color: transparent;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
