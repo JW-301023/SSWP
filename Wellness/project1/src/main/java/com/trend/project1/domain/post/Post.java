@@ -10,6 +10,10 @@ public class Post {
     private int views;
     private int likes;
 
+    // 기본 생성자
+    public Post() {}
+
+    // 모든 매개변수를 받는 생성자
     public Post(Long id, String category, String title, String content, String name, String createdAt, int views, int likes) {
         this.id = id;
         this.category = category;
@@ -52,6 +56,38 @@ public class Post {
 
     public int getLikes() {
         return likes;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }
 

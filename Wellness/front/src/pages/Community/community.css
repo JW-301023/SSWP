@@ -29,9 +29,10 @@
     /*gap: 20px; !* 각 항목 간격 *!*/
     text-align: center;
     width: 100%;
-    max-width: 1200px;
-    margin-bottom: 20px;
-
+    height: 100%;
+    margin: 20px;
+    padding: 40px;
+    max-width: 100%;
 }
 
 .community-header h1 {

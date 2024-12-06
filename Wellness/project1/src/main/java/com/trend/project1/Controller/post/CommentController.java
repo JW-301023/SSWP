@@ -82,4 +82,18 @@ public class CommentController {
         return ResponseEntity.ok("댓글 수정 완료!");
     }
 
+    @GetMapping("/user/{userid}")
+    public ResponseEntity<List<Comment>> getUserComments(@PathVariable String userid) {
+        String sql = "SELECT * FROM comments WHERE name = ? ORDER BY created_at DESC";
+        List<Comment> comments = jdbcTemplate.query(sql, new Object[]{userid}, (rs, rowNum) -> {
+            Comment comment = new Comment();
+            comment.setId(rs.getLong("id"));
+            comment.setContent(rs.getString("content"));
+            comment.setCreatedAt(rs.getTimestamp("created_at"));
+            return comment;
+        });
+        return ResponseEntity.ok(comments);
+    }
+
+
 }

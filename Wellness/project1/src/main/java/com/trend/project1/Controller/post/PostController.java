@@ -141,6 +141,20 @@ public class PostController {
         jdbcTemplate.update(sql, id);
         return ResponseEntity.ok("좋아요 성공");
     }
+
+    @GetMapping("/user/{userid}")
+    public ResponseEntity<List<Post>> getUserPosts(@PathVariable String userid) {
+        String sql = "SELECT id, title, created_at FROM posts WHERE name = ? ORDER BY created_at DESC";
+        List<Post> posts = jdbcTemplate.query(sql, new Object[]{userid}, (rs, rowNum) -> {
+            Post post = new Post();
+            post.setId(rs.getLong("id"));
+            post.setTitle(rs.getString("title"));
+            post.setCreatedAt(rs.getString("created_at"));
+            return post;
+        });
+        return ResponseEntity.ok(posts);
+    }
+
 }
 
 
