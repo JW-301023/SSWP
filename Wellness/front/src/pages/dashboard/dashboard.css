@@ -1,74 +1,79 @@
 .dashboard {
     display: flex;
-    flex-direction: row; 
-    justify-content: space-between; 
-    margin: 10px;
-    position: relative;
-    overflow-x: auto;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    padding: 10px;
+    gap: 20px;
+
+    height: auto; 
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    background-color: blueviolet;
     overflow-y: auto;
 }
 
-.col-container {
+/* widgets */
+.header-container {
+    display: flex;
+    flex-direction: row; 
+    height: 100%; 
+    width: 100%;
+}
+
+/* featuredInfo, row */
+.widgets-container {
+    flex: 3;
     display: flex;
     flex-direction: column;
-    /* position: absolute; */
+    justify-content: space-between;
+    align-items: stretch;
     position: relative;
+    box-sizing: border-box; /* 패딩 포함 */
+    gap: 30px;
+}
+
+
+/* col */
+.footer-container {
+    display: flex;
+    flex: 1;
     width: 100%;
-    flex-grow: 1;
-    margin-top: 10px;
-    margin-left: 10px;
-    /* padding-left: 15px; */
-    top: 0;
-    right: 0;
-    height: 100%;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+/* widgetCol -> youtube */
+.row-container {
+    width: 100%;
     box-sizing: border-box;
 }
 
-.widgets-container {
-    /* margin-left: 255; */
-    flex: 4;
-    max-width: calc(100% - 250px);
-    margin-top: 5px;
-    margin-right: auto;
-    position: relative;
-}
 
-
-.row-container {
-    display: flex;
-    flex: 4;
+.loading-container {
+   /* position: absolute; 
+    top: 0;
+    left: 0; */
     width: 100%;
     height: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 
-/* loading-container: 로딩 화면 전체 스타일 */
-.loading-container {
-    position: fixed;
-    top: 50px;
-    left: 250px;
-    width: 150vh;
-    height: 90vh;
-    margin: 20px;
+.loading {
+    width: 300px;
+    height: 300px;
+    background:rgba(31, 31, 31, 0.8); 
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
-    /* z-index: 9999; */
+    border-radius: 20px;;
 }
 
-/* 화면 흐림 효과 */
-.loading-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* background: #1D1D1D; */
-    background: linear-gradient(90deg, #1D1D1D, #333333);
-    border-radius: 30px;
-    /* filter: blur(100px); */
-    z-index: -1; /* 스피너보다 아래로 */
-}
-
-/* 스피너 스타일 */
 .loading-container .react-spinner {
-    z-index: 10000; /* 스피너가 최상단에 표시되도록 */
-}
+    z-index: 10000; 
+} 

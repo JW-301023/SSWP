@@ -4,6 +4,11 @@ import axios from "axios";
 import "./postdetail.css";
 import Comments from "./Comments";
 
+// 버튼 아이콘
+import { TbEdit } from "react-icons/tb";
+import { RiDeleteBin2Line } from "react-icons/ri";
+
+
 const PostDetail = () => {
     const { id } = useParams(); // URL에서 게시글 ID 가져오기
     const [post, setPost] = useState(null);
@@ -104,8 +109,12 @@ const PostDetail = () => {
             {/* 수정 및 삭제 버튼 */}
             {isName && (
                 <div className="post-actions">
-                    <button className="edit-button" onClick={handleEdit}>Edit</button>
-                    <button className="delete-button" onClick={handleDelete}>Delete</button>
+                    <button className="edit-button" onClick={handleEdit}>
+                        <TbEdit />
+                    </button>
+                    <button className="delete-button" onClick={handleDelete}>
+                        <RiDeleteBin2Line />
+                    </button>
                 </div>
             )}
             <button className="back-button" onClick={() => navigate("/community", {state: {category}})}>

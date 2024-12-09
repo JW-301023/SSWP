@@ -23,10 +23,8 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
-            <div className="sidebarWrapper">
-                <div className="sidebarBrend">
-                    <h1>Wellty</h1>
-                </div>
+            <div className="sidebar-container">
+                <div className="sidebarBrend">Wellty</div>
                 <div className="sidebarMenu">
                     <ul>
                         {/* 카테고리 동적 생성 */}

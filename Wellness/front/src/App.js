@@ -11,48 +11,39 @@ import Community from "./pages/Community/Community";
 import CreatePostModal from "./pages/Community/CreatePostModal";
 import PostDetail from "./pages/Community/PostDetail";
 import EditPost from "./pages/Community/EditPost";
+import Favorites from './pages/Favorite/Favorites';
 
 // import Login from './pages/user/Login';
 import './app.css';
 // import axios from "axios";
 
 function App() {
-  const userid = localStorage.getItem('userid');
+  // const userid = localStorage.getItem('userid');
+
   return (
     <Router>
       <div className="App">
-        <Topbar />
-        <Sidebar />
+        <Topbar className="topbar" />
+        <Sidebar className="sidebar" />
         <div className="container">
           <Routes>
-            <Route path="/" element={<div className="home"><Home /></div>} />
+            <Route path="/" element={<Home />} />
 
-            <Route path="/dashboard" element={<div className="dashboard"><Dashboard /></div>} />
-            <Route path="/community" element={<div className="Community"><Community/></div>}/>
-            <Route path="/community/:id" element={<div className="PostDetail"> <PostDetail/></div>}/>
-            <Route path="/community/edit/:id" element={<div className="EditPost"><EditPost/></div>} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
-            {/* 로그인한 사용자만 접근 가능 */}
-            <Route path="/create"
-                   element={
-                     <PrivateRoute>
-                       <div className="CreatePostModal"><CreatePostModal/></div>
-                     </PrivateRoute>}
-            />
+            {/* Users */}
+            <Route path="/create" element={<PrivateRoute><CreatePostModal/></PrivateRoute>} />
+            <Route path="/login" element={<LoginSlider />} />
+            <Route path="/users" element={<PrivateRoute><UserInfo /></PrivateRoute>} />
 
-            {/* 로그인 화면은 /login으로 이동 */}
-            <Route 
-              path="/login" 
-              element={<LoginSlider />}
-            />
+            {/* Favorite */}
+            {/* <Route path="/favorites" element={<Favorites />} /> */}
 
-            {/* 회원 정보 화면은 PrivateRoute로 보호 */}
-            {/* 로그인 화면은 로그인하지 않은 사용자만 접근 가능 */}
-            <Route path="/users" element={
-              <PrivateRoute>
-                <UserInfo />
-              </PrivateRoute>
-            } />
+            {/* Community */}
+            <Route path="/community" element={<Community/>} />
+            <Route path="/community/:id" element={<PostDetail/>} />
+            <Route path="/community/edit/:id" element={<EditPost/>} />
+
           </Routes>    
         </div>
       </div>

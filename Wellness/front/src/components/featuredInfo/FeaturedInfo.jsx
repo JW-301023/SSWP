@@ -188,14 +188,9 @@ import AgesChart from "../chart/Ageschart";
     if (isLoading) {
         return <p>데이터를 불러오는 중입니다...</p>;
     }
-
-    // console.log("Daily Data: ", dailyData);
-    // console.log("Monthly Data: ", monthlyData);
-    // console.log("Gender Data: ", genderData);
-    // console.log("Ages Data: ", agesData);   
     
     return (
-        <div>
+        <div className="chart-container">
             <div className="featured-container">
                 <div className="barChart-container">
                     <span className="chartTitle">일별 검색률</span>

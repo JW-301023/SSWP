@@ -52,7 +52,8 @@ const Favorites = ({ userid }) => {
     // 로그인 상태
     return (
         <div className="favorites-container">
-            <h3 className="favorites-title">Your Favorites</h3>
+            
+            {/* <h3 className="favorites-title">Your Favorites</h3>
             <div className="favorites-list">
                 {favorites.length === 0 ? (
                     <p>No favorites.</p>
@@ -70,7 +71,7 @@ const Favorites = ({ userid }) => {
                         </div>
                     ))
                 )}
-            </div>
+            </div> */}
         </div>
     );
 };

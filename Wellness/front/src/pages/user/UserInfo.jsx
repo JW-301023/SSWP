@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './userinfo.css'
 
+import { FiLogOut } from "react-icons/fi";
+
+
 // 회원 정보 화면//
 export default function UserInfo() {
     const userid = localStorage.getItem('userid'); // 저장된 사용자 ID 가져오기
@@ -34,8 +37,10 @@ export default function UserInfo() {
 
     return (
         <div className="user-info">
-            <h1>{userid}님 Info</h1>
-            <p> Welcome😉 {userid}님</p>
+            <div className="user-header">
+                <h1>{userid}님 Info</h1>
+                <p> Welcome😉 {userid}님</p>
+            </div>
             <div className="tabs">
                 <span
                     className={`tab ${activeTab === "posts" ? "active" : ""}`}
@@ -84,7 +89,7 @@ export default function UserInfo() {
                     )}
                 </div>
             )}
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout}><FiLogOut /></button>
         </div>
     );
 }

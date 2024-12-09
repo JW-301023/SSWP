@@ -72,21 +72,10 @@ const Community = () => {
     return (
         <div className="community-container">
             <div className="community-header">
-                <h1>Wellty Community</h1>
+                <h1>Community</h1>
+            </div>
 
-                {/* 카테고리 필터 */}
-                <div className="category-filter">
-                    {["ALL", "Physical", "Social", "Mental", "Emotional", "Environmental"].map((cat, index) => (
-                        <span
-                            key={index}
-                            className={`category-item ${category === cat ? "active" : ""}`}
-                            onClick={() => setCategory(cat)}
-                        >
-                {cat}
-                        </span>
-                    ))}
-                </div>
-                {/* 검색창 */}
+            <div className="community-content">
                 <div className="search-bar">
                     <input
                         type="text"
@@ -98,7 +87,18 @@ const Community = () => {
                     <button onClick={handleSearch}>🔍</button>
                 </div>
 
-                {/* 게시물 테이블 */}
+                <div className="category-filter">
+                    {["ALL", "Physical", "Social", "Mental", "Emotional", "Environmental"].map((cat, index) => (
+                        <span
+                            key={index}
+                            className={`category-item ${category === cat ? "active" : ""}`}
+                            onClick={() => setCategory(cat)}
+                        >
+                            {cat}
+                        </span>
+                    ))}
+                </div>
+            
                 <table className={`post-table ${category !== "ALL" ? "category-hidden" : ""}`}>
                     <thead>
                     <tr>
@@ -126,20 +126,19 @@ const Community = () => {
                     </tbody>
                 </table>
 
-                {/* 글쓰기 버튼 */}
                 <div className="write-button-container">
                     <button className="write-button" onClick={handleOpenModal}>
                         Click Your Thoughts
                     </button>
                 </div>
             </div>
-            {/* CreatePostModal */}
-            <CreatePostModal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onSubmit={handleCloseModal}
-            />
-        </div>
+            
+        <CreatePostModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            onSubmit={handleCloseModal}
+        />
+    </div>
     );
 };
 

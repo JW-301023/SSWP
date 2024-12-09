@@ -1,90 +1,77 @@
 .topbar {
-    position: static;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 270px;
-    width: calc(100% - 270px);
-    height: 50px;
-    padding: 0 5px; /* 좌우 여백 */
+    width: 100%; 
+    height: 100%;
 }
 
-.topbarWrapper {
+
+.topbar-container {
+    width: 100%;
     height: 100%;
-    padding: 0 20px;
+    padding: 0 25px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 3px solid rgba(31, 31, 31, 0.3);
 }
 
-.searchWrapper {
-    border: 1px solid #ccc;
-    border-radius: 30px;
-    height: 30px;
+
+.top-searchBar {
     display: flex;
     align-items: center;
-    overflow-x: hidden;
+    width: 500px;
+    height: 40px;
+    padding: 0 10px; 
+    border-radius: 20px;
+    background-color: #aaaa;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
-.searchWrapper form {
-    display: inline-block;
-    padding: 0;
+.top-searchBar form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background: transparent;
 }
 
-.searchWrapper input {
-    width: 300px;
-    padding: 1rem;
+.top-searchBar input {
+    width: 100%;
+    padding: 0 20px;
     border: none;
     outline: none;
     font-size: 1rem;
-    color: whitesmoke;
+    color: #070707;
+    background-color: transparent;
 }
 
-.searchWrapper button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin-left: 30px;
+.top-searchBar button {
+    padding: 0 15px;
+    font-size: 1.3rem;
+    background-color: transparent; 
     border: none;
     cursor: pointer;
+    /* transition: background-color 0.3s ease;  */
 }
 
 
-.topIconWrapper {
+.topbarIcon-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    gap: 15px;
     cursor: pointer;
+    font-size: 1.7rem;
+    color: #ddd;
 }
 
-.topbarIconContainer {
-    position: relative;
-    margin-left: 20px;
-    font-size: 27px !important;
-    color: white;
-}
 
-.topIconBadge {
-    position: absolute;
-    top: -5px;
-    left: 13px;
-
-    background-color: red;
+.topbarIcon-container img {
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
-    height: 13px;
-    width: 13px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 11px;
-    color: white;
-}
-
-.topAvatar {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    margin-top: -8px;
-    margin-left: 23px;
+    object-fit: cover;
+    border: 2px dashed #ccc;
 }

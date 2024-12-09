@@ -70,8 +70,8 @@ const EditPost = () => {
                 onChange={(e) => setContent(e.target.value)}
             />
             <div className="edit-post-buttons">
-                <button onClick={handleSubmit}>Submit</button>
-                <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                <button onClick={handleSubmit}>수정</button>
+                <button className="cancel-button" onClick={handleCancel}>취소</button>
             </div>
         </div>
     );

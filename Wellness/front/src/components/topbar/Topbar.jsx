@@ -34,36 +34,29 @@ const Topbar = () => {
 
     return (
         <div className="topbar">
-            <div className="topbarWrapper">
-                <div className="searchWrapper">
+            <div className="topbar-container">
+                <div className="top-searchBar">
                     <form onSubmit={handleSearch}>
-                    <input 
-                        type="search" 
-                        placeholder="Search" 
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <button type="submit">🔍</button>
+                        <input 
+                            type="text" 
+                            placeholder="Search" 
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <button type="submit">🔍</button>
                     </form>
                 </div>
-                <div className="topIconWrapper">
+                <div className="topbarIcon-container">
                     {/* topbarIcon */}
-                    <div className="topbarIconContainer">
-                        <FiMoon />
-                    </div>
-                    {/* topbarIcon */}
-                    <div className="topbarIconContainer">
-                        <RiNotification4Line />
-                        <span className="topIconBadge">2</span>
-                    </div>
+                    <FiMoon />
+                    <RiNotification4Line />
                     <img src={imgLogo} alt="" className="topAvatar" onClick={handleLogoClick}
-                         style={{cursor:"pointer"}}/>
-
+                        style={{cursor:"pointer"}}/>
                 </div>
             </div>
         </div>
-        )
-    }
+    );
+}
 
 export default Topbar;
 
