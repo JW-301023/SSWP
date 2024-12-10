@@ -1,51 +1,52 @@
-/* row-container */
-.widgetCol-container {
+.related-video {
+    flex: 2;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    margin: 0 10px;
-
-    border-radius: 30px;
-    background-color: #9481FF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
     /* 스크롤 가능하도록 설정 */
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     scroll-behavior: smooth;
-
 }
 
-.widgetCol-title {
-    margin-left: 10px;
-    margin-bottom: 20px;
+.video-title {
+    width: 100%;
+    height: auto;
+    padding: 5px;
     font-weight: bold;
-    font-size: 1rem;
-    color: #070707;
+    font-size: 0.9rem;
+    color: #aaaaaa;
     background-color: transparent;
 }
 
 /* 비디오 리스트 스타일 */
-.videoList {
+.video-list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
+    height: auto;
+    padding: 20px;
     gap: 20px;
     box-sizing: border-box;
-    background-color: transparent;
+    border-radius: 30px;
+    background-color: #9481FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-.videoList::after {
-    content: ""; /* 빈 내용 */
+.video-list::after {
+    content: ""; 
     display: block;
-    width: 5px; /* 마지막 요소 뒤 여백 */
-    flex-shrink: 0; /* 크기가 줄어들지 않음 */
+    height: 5px; 
+    flex-shrink: 0; 
 }
 
-/* 개별 비디오 아이템 */
-.videoItem {
+
+.video-item {
     width: 100%;
     max-width: 250px;
+    height: auto;
     display: flex;
     flex-direction: column; 
     align-items: center; 
@@ -54,23 +55,21 @@
     background-color: transparent;
 }
 
-/* 유튜브 플레이어 */
-.youtubePlayer {
-    width: 100%; 
-    max-width: 280px;
-    height: 150px;
-    border-radius: 10px;
-}
 
-.videoPlayer {
+.video-player {
+    width: 100%; 
+    max-width: 250px;
+    height: 150px;
     background-color: transparent;
 }
 
 /* 비디오 제목 */
-.videoTitle {
+.youtube-title {
     width: 100%;
+    height: auto;
+    text-align: center;
     max-width: 250px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: #333;
     white-space: nowrap;

@@ -1,5 +1,5 @@
 import React from "react";
-import './genderchart.css'
+import './genderChart.css'
 import { Pie } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -63,7 +63,7 @@ const GenderChart = ({ data }) => {
     };
 
     return (
-        <div className="gender-container">
+        <div className="gender-chart">
             <Pie data={chartData} options={options} />
         </div>
 

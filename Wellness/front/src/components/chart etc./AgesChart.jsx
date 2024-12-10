@@ -1,5 +1,5 @@
 import React from "react";
-import './ageschart.css'
+import './agesChart.css'
 import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -75,7 +75,7 @@ const AgesChart = ({ data }) => {
   };
 
   return (
-    <div className="ages-container">
+    <div className="ages-chart">
       <Doughnut data={chartData} options={options}/>
     </div>
   );

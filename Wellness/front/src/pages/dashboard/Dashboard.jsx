@@ -3,9 +3,14 @@ import { useLocation} from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 // import axios from "axios";
 import './dashboard.css'
-import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
-import WidgetRow from "../../components/widgets/widgetRow/WidgetRow";
-import WidgetCol from "../../components/widgets/widgetCol/WidgetCol";
+// import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
+// import WidgetRow from "../../components/chart etc./RelatedWord";
+// import WidgetCol from "../../components/widgets/bottom/WidgetBottom";
+import WidgetTop from "../../components/widgets/top/WidgetTop";
+import WidgetMiddle from "../../components/widgets/middle/WidgetMiddle";
+import WidgetBottom from "../../components/widgets/bottom/WidgetBottom";
+import RelatedWord from "../../components/chart etc./RelatedWord";
+
 
 export default function Dashboard() {
     const location = useLocation();
@@ -39,16 +44,22 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard">
-            <div className="header-container">
-                <div className="widgets-container">
+            <div className="row-container">
+                <WidgetTop keyword={keyword}/>
+                <WidgetMiddle keyword={keyword}/>
+            </div>
+            <div className="col-container">
+                <RelatedWord keyword={keyword} />
+                <WidgetBottom keyword={keyword}/>
+                {/* <div className="widgets-container">
                     <FeaturedInfo keyword={keyword} />
                     <WidgetRow keyword={keyword} />
-                </div>
-            </div>
+                </div> */}
+            {/* </div>
             <div className="footer-container">
                 <div className="row-container">
                     <WidgetCol keyword={keyword} />
-                </div>
+                </div> */}
             </div>
         </div>
     )

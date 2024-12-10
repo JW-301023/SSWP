@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import './widgetrow.css'
+import './relatedWord.css'
 import axios from "axios";
 import * as d3 from "d3";
 
-const WidgetRow = ({ keyword }) => {
+const RelatedWord = ({ keyword }) => {
     const [suggestions, setSuggestions] = useState([]);
     const svgRef = useRef(null);
 
@@ -44,10 +44,10 @@ const WidgetRow = ({ keyword }) => {
 
          // 데이터 준비
          const data = [
-            { id: keyword, value: 100 }, // 중앙 키워드
+            { id: keyword, value: Math.max(100, keyword.length * 15) }, // 중앙 키워드
             ...suggestions.map((suggestion) => ({
                 id: suggestion,
-                value: Math.random() * 60 + 10, // 각 키워드의 크기를 임의로 설정
+                value: Math.max(50, keyword.length * 10), // 각 키워드의 크기를 임의로 설정
             })),
         ];
 
@@ -67,27 +67,29 @@ const WidgetRow = ({ keyword }) => {
             .join("g")
             .attr("transform", d => `translate(${d.x}, ${d.y})`);
 
+        const colors = ["#77D098", "#C5EB64", "#DAFF7C", "#9481FF", "#ddd"];
         bubble.append("circle")
             .attr("r", d => d.r)
-            .attr("fill", (d, i) => d3.schemeCategory10[i % 10]);
+            .attr("fill", (d, i) => colors[i % colors.length]);
 
         bubble.append("text")
             .attr("text-anchor", "middle")
             .attr("dy", "0.3em")
             .text(d => d.data.id)
-            .style("font-size", d => `${d.r / 3}px`)
-            .style("fill", "#fff");
+            .style("font-size", d => `${Math.min(d.r / 3, 20)}px`)
+            .style("font-weight", "bold")
+            .style("fill", "#070707");
     }, [suggestions, keyword]);
 
 
     return (
-        <div className="widgetRow-container">
-            <div className="widgetRow-title">연관 키워드</div>
-                <div className="relatedList">
+        <div className="related-word">
+            <div className="related-word-title">연관 키워드</div>
+                <div className="related-list">
                     <svg ref={svgRef} className="bubble-chart" />
                 </div>
         </div>
     )
 }
 
-export default WidgetRow;
+export default RelatedWord;

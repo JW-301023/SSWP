@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './widgetcol.css';
+import './widgetBottom.css';
 import axios from 'axios';
 import YouTube from 'react-youtube';
 
-const WidgetCol = ({ keyword }) => {
-    const [videos, setVideos] = useState([]); // 비디오 데이터를 상태로 저장
-    const [error, setError] = useState(null); // 에러 상태 관리
+const WidgetBottom = ({ keyword }) => {
+    const [videos, setVideos] = useState([]); 
+    const [error, setError] = useState(null); 
 
     const fetchVideos = async () => {
         try {
@@ -36,19 +36,19 @@ const WidgetCol = ({ keyword }) => {
     };
 
     return (
-        <div className="widgetCol-container">
-            <div className="widgetCol-title">관련 영상</div>
+        <div className="related-video">
+            <div className="video-title">관련 영상</div>
             {error && <div>{error}</div>}
             {/* 유튜브 비디오 리스트 */}
-            <div className="videoList">
+            <div className="video-list">
                 {videos.map((item) => (
-                    <div className="videoItem" key={item.videoId}>
+                    <div className="video-item" key={item.videoId}>
                         <YouTube 
-                            className="videoPlayer" 
+                            className="video-player" 
                             videoId={item.videoId} 
                             opts={opts} 
                         />
-                        <div className="videoTitle">{item.title}</div>
+                        <div className="youtube-title">{item.title}</div>
                     </div>
                 ))}
             </div>
@@ -56,4 +56,4 @@ const WidgetCol = ({ keyword }) => {
     )
 }
 
-export default WidgetCol;
+export default WidgetBottom;

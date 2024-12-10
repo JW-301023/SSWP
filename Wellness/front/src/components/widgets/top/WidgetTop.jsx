@@ -1,52 +1,32 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './featuredInfo.css'
+import './widgetTop.css';
 
-import DailyChart from "../chart etc./Dailychart";
-import MonthlyChart from "../chart etc./Monthlychart";
-import GenderChart from "../chart etc./Genderchart";
-import AgesChart from "../chart etc./Ageschart";
+import GenderChart from "../../chart etc./GenderChart";
+import AgesChart from "../../chart etc./AgesChart";
+import DeviceChart from "../../chart etc./DeviceChart";
 
- const FeaturedInfo = ({ keyword }) => {
-    const [dailyData, setDailyData] = useState([]);
-    const [monthlyData, setMonthlyData] = useState([]);
+
+const WidgetTop = ({ keyword }) => {
+    const [deviceData, setDeviceData] = useState(null);
     const [genderData, setGenderData] = useState(null);
     const [agesData, setAgesData] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
 
-    // 현재 날짜 기준 요청 데이터 생성
     const calculateDateRange = (timeUnit) => {
         const now = new Date();
         const year = now.getFullYear();
         const month = String(now.getMonth() + 1).padStart(2, "0");
         const day = String(now.getDate()).padStart(2, "0");
 
-        if (timeUnit === "month") {
-            // 월별 데이터: 해당 연도의 1월 1일부터 현재 날짜까지
-            const startDate = `${year}-01-01`; // 1월 1일
-            const endDate = `${year}-${month}-${day}`; // 오늘 날짜
-            return { startDate, endDate };
-        } else if (timeUnit === "date") {
-            if (day <= 5) {
-                const fourWeeksAgo = new Date(now.setDate(now.getDate() - 28));
-                const startDate = fourWeeksAgo.toISOString().split("T")[0];
-                const endDate = `${year}-${month}-${day}`;
-                return { startDate, endDate }
-            } else {
-                // 일별 데이터: 해당 월의 1일부터 현재 날짜까지 \
-                const startDate = `${year}-${month}-01`; 
-                const endDate = `${year}-${month}-${day}`; // 오늘 날짜
-                return { startDate, endDate };
-            }
+        if (timeUnit === "date") {
+            return { 
+                startDate: `${year}-${month}-01`, 
+                endDate: `${year}-${month}-${day}` 
+            };
         }
-
-        // 기본값: 전체 연도 기준
-        const startDate = `${year}-01-01`;
-        const endDate = `${year}-${month}-${day}`;
-        return { startDate, endDate };
-
     };
         
     const fetchTrendData = async (timeUnit, type, value) => {
@@ -57,6 +37,8 @@ import AgesChart from "../chart etc./Ageschart";
         }
 
         const { startDate, endDate } = calculateDateRange(timeUnit);
+        console.log(`timeUnit: ${timeUnit}, startDate: ${startDate}, endDate: ${endDate}`);
+
         const requestData = {
             startDate,
             endDate,
@@ -67,11 +49,12 @@ import AgesChart from "../chart etc./Ageschart";
                     keywords: [keyword]
                 }
             ],
+            ...(type === "device" ? { device: value } : {}),
             ...(type === "gender" ? { gender: value } : {}),
             ...(type === "age" ? { ages: value } : {}),
         };
 
-        // 요청 데이터 로그 -> 잘됨
+        // // 요청 데이터 로그 -> 잘됨
         // console.log("Request Data:", requestData);
 
         try {
@@ -79,7 +62,7 @@ import AgesChart from "../chart etc./Ageschart";
                 headers: { "Content-Type": "application/json" }
             });    
             
-            // 응답 데이터 로그 -> 잘됨
+            // // 응답 데이터 로그 -> 잘됨
             // console.log("API Response:", response.data);
 
             return response.data?.results || []; // API 응답 결과 반환
@@ -97,25 +80,24 @@ import AgesChart from "../chart etc./Ageschart";
             setIsLoading(true); // 로딩 시작
 
             try {
-                // 일별 데이터 요청
-                const dailyResponse = await fetchTrendData("date");
-                if (dailyResponse) {
-                    const transformedData = dailyResponse[0]?.data.map((item) => ({
+                // 디바이스 데이터 요청
+                const pcResponse = await fetchTrendData("date", "device", "pc");
+                const moResponse = await fetchTrendData("date", "device", "mo");
+                if (pcResponse && moResponse) {
+                    const pcData = pcResponse[0]?.data.map((item) => ({
                         date: item.period,
                         ratio: item.ratio,
                     }));
-                    setDailyData(transformedData);
+                    const moData = moResponse[0]?.data.map((item) => ({
+                        date: item.period,
+                        ratio: item.ratio,
+                    }))
+                    setDeviceData ({
+                        pc: pcData,
+                        mo: moData
+                    })
                 } 
 
-                // 월별 데이터 요청
-                const monthlyResponse = await fetchTrendData("month");
-                if (monthlyResponse) {
-                    const transformedMonthlyData = monthlyResponse[0]?.data.map((item) => ({
-                        month: item.period, 
-                        ratio: item.ratio, 
-                      }));
-                      setMonthlyData(transformedMonthlyData);
-                }
 
                 // 성별 데이터 요청
                 const maleResponse = await fetchTrendData("date", "gender", "m");
@@ -156,8 +138,9 @@ import AgesChart from "../chart etc./Ageschart";
                 ];
                 
                 const ageData = ageResponses.map(({ ageGroup, response }) => {
-                    const total = response[0]?.data.reduce((sum, item) => {                        if (item.ratio) return sum + item.ratio;
-                        return sum;
+                    const total = response[0]?.data.reduce((sum, item) => {                        
+                        if (item.ratio) return sum + item.ratio;
+                            return sum;
                     }, 0) || 0; // 기본값 처리
 
                     return { ageGroup, total };
@@ -181,38 +164,29 @@ import AgesChart from "../chart etc./Ageschart";
         fetchData();
     }, [keyword]);
 
-    if (error) {
-        return <p>{error}</p>;
-    }
+    console.log("Device Data:", deviceData);
+    console.log("Gender Data:", genderData);
+    console.log("Ages Data:", agesData);
 
-    if (isLoading) {
-        return <p>데이터를 불러오는 중입니다...</p>;
-    }
+    if (error) { return <p className="error-message">{error}</p>; }
+
+    if (isLoading) { return <p className="loading-message">데이터를 불러오는 중입니다...</p>; }
     
     return (
-        <div className="chart-container">
-            <div className="featured-container">
-                <div className="barChart-container">
-                    <span className="chartTitle">일별 검색률</span>
-                        <DailyChart data={dailyData} />
-                </div>
-        
-                <div className="pieChart-container">
-                    <span className="chartTitle">성별 검색률</span>
-                        <GenderChart data={genderData} />
-                </div>
-        
-                <div className="doughnutChart-container">
-                    <span className="chartTitle">연령별 검색률</span>
-                        <AgesChart data={agesData} />
-                </div>
+        <div className="top-chart">
+            <div className="bar-chart">
+                    <span className="chart-title">검색환경별 검색률</span>
+                    <DeviceChart data={deviceData} />
             </div>
 
-            <div className="another-container">
-                <div className="lineChart-container">
-                    <span className="lineTitle">월별 검색률</span>
-                        <MonthlyChart data={monthlyData}/>
-                </div>
+            <div className="pie-chart">
+                <span className="chart-title">성별 검색률</span>
+                <GenderChart data={genderData} />
+            </div>
+        
+            <div className="doughnut-chart">
+                <span className="chart-title">연령별 검색률</span>
+                <AgesChart data={agesData} />
             </div>
         </div>
     );
@@ -220,4 +194,4 @@ import AgesChart from "../chart etc./Ageschart";
 };
         
 
-export default FeaturedInfo;
+export default WidgetTop;
