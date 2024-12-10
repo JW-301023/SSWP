@@ -9,7 +9,7 @@ import './dashboard.css'
 import WidgetTop from "../../components/widgets/top/WidgetTop";
 import WidgetMiddle from "../../components/widgets/middle/WidgetMiddle";
 import WidgetBottom from "../../components/widgets/bottom/WidgetBottom";
-import RelatedWord from "../../components/chart etc./RelatedWord";
+import RelatedWord from "../../components/chart_etc/RelatedWord";
 
 
 export default function Dashboard() {

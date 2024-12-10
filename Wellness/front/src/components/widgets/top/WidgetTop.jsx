@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './widgetTop.css';
 
-import GenderChart from "../../chart etc./GenderChart";
-import AgesChart from "../../chart etc./AgesChart";
-import DeviceChart from "../../chart etc./DeviceChart";
+import GenderChart from "../../chart_etc/GenderChart";
+import AgesChart from "../../chart_etc/AgesChart";
+import DeviceChart from "../../chart_etc/DeviceChart";
 
 
 const WidgetTop = ({ keyword }) => {

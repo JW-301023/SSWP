@@ -17,6 +17,8 @@
 .user-header {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .user-header h1 {
@@ -99,6 +101,9 @@
 }
 
 .item {
+    display: flex; /* Flexbox로 배치 */
+    justify-content: space-between; /* 좌우로 분리 */
+    align-items: center;
     padding: 10px 0;
     width: 100%;
     height: auto; 
@@ -107,6 +112,46 @@
 
 }
 
+.post-title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+.post-date{
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    text-align: center;
+    padding: 0;
+    color: #aaaaaa;
+
+}
+
+.comment-text{
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    text-align: center;
+    padding: 0;
+    color: #b3b3b3;
+    font-weight: bold;
+}
+
+.comment-date {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    text-align: center;
+    padding: 0;
+    color: #aaaaaa;
+}
+
+/* post, comment 대체
 .item h3 {
     width: 100%;
     height: auto;
@@ -125,7 +170,7 @@
     text-align: center;
     padding: 0;
     color: #aaaaaa;
-}
+} */
 
 .empty {
     width: 100%;
@@ -165,4 +210,24 @@
 .user-info button:active {
     background-color: #148037; /* 클릭 시 더 짙은 초록색 */
 }
+
+/*  *여기서부터 추가* 이미지 컨테이너 스타일 */
+.user-image-container {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center;    /* 수직 중앙 정렬 */
+    width: 100%;
+    margin-bottom: 10px;    /* 이미지와 다른 요소 간 간격 */
+}
+
+/* 유저 이미지 스타일 */
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* 원형 이미지 */
+    border: 2px solid #ccea77;
+    object-fit: cover;
+}
+
+
 

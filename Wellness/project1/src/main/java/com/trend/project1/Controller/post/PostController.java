@@ -142,6 +142,7 @@ public class PostController {
         return ResponseEntity.ok("좋아요 성공");
     }
 
+    // 내가 쓴 게시글 내정보에 불러오기 //
     @GetMapping("/user/{userid}")
     public ResponseEntity<List<Post>> getUserPosts(@PathVariable String userid) {
         String sql = "SELECT id, title, created_at FROM posts WHERE name = ? ORDER BY created_at DESC";

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import '../../assets/img/profile.png';
 import './userinfo.css'
 
 import { FiLogOut } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 
 // 회원 정보 화면//
 export default function UserInfo() {
-    const userid = localStorage.getItem('userid'); // 저장된 사용자 ID 가져오기
-    const [posts, setPosts] = useState([]); // 사용자가 작성한 게시글
-    const [comments, setComments] = useState([]); // 사용자가 작성한 댓글
-    const [activeTab, setActiveTab] = useState("posts"); // 활성화된 탭 상태
+    const userid = localStorage.getItem('userid'); 
+    const [posts, setPosts] = useState([]); 
+    const [comments, setComments] = useState([]); 
+    const [activeTab, setActiveTab] = useState("posts");
+    const navigate = useNavigate(); // 페이지 이동을 위한 navigate 추가 
 
     useEffect(() => {
         const fetchUserContent = async () => {
@@ -31,17 +34,30 @@ export default function UserInfo() {
     }, [userid]);
 
     const handleLogout = () => {
-        localStorage.removeItem('userid'); // 로그아웃 시 로컬 스토리지에서 사용자 정보 제거
-        window.location.href = '/users'; // 로그인 화면으로 이동
+        localStorage.removeItem('userid'); 
+        window.location.href = '/users'; 
+    };
+
+    // 날짜 포맷 함수
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString(); // YYYY-MM-DD 형식으로 변환
     };
 
     return (
         <div className="user-info">
             <div className="user-header">
                 <h1>{userid}님 Info</h1>
-                <p> Welcome😉 {userid}님</p>
-            </div>
-            <div className="tabs">
+                <div className="user-image-container">
+                    <img
+                        src="./profile.png"
+                        alt="User Avatar"
+                        className="user-avatar"
+                    />
+                </div>
+                    <p> Welcome😉 {userid}님</p>
+                </div>
+                <div className="tabs">
                 <span
                     className={`tab ${activeTab === "posts" ? "active" : ""}`}
                     onClick={() => setActiveTab("posts")}
@@ -52,7 +68,7 @@ export default function UserInfo() {
                     className={`tab ${activeTab === "comments" ? "active" : ""}`}
                     onClick={() => setActiveTab("comments")}
                 >
-                    댓글 단 글
+                    내 댓글
                 </span>
             </div>
 
@@ -60,9 +76,12 @@ export default function UserInfo() {
                 <div className="userinfo-content">
                     {posts.length > 0 ? (
                         posts.map((post) => (
-                            <div key={post.id} className="item">
-                                <h3>{post.title}</h3>
-                                <p>{post.createdAt}</p>
+                            <div key={post.id} className="item"
+                                onClick={() => navigate(`/community/${post.id}`)} // 클릭 시 PostDetail로 이동
+                                style={{cursor: "pointer"}} // 커서 스타일 추가
+                            >
+                                <h3 className="post-title">{post.title}</h3>
+                                <p span className="post-date">{post.createdAt}</p>
                             </div>
                         ))
                     ) : (
@@ -77,9 +96,12 @@ export default function UserInfo() {
                 <div className="userinfo-content">
                     {comments.length > 0 ? (
                         comments.map((comment) => (
-                            <div key={comment.id} className="item">
-                                <p>{comment.content}</p>
-                                <span>{comment.createdAt}</span>
+                            <div key={comment.id} className="item"
+                                    onClick={() => navigate(`/community/${comment.postId}`)} // 댓글이 달린 게시물 상세보기로 이동
+                                    style={{cursor: "pointer"}}
+                            >
+                                <p className="comment-text">{comment.content}</p>
+                                <span className="comment-date">{formatDate(comment.createdAt)}</span>
                             </div>
                         ))
                     ) : (

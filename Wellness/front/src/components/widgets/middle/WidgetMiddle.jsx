@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './widgetMiddle.css';
 
-import DailyChart from "../../chart etc./DailyChart";
-import MonthlyChart from "../../chart etc./MonthlyChart";
-import CombinedLineChart from "../../chart etc./CombinedChart";
+import DailyChart from "../../chart_etc/DailyChart";
+import MonthlyChart from "../../chart_etc/MonthlyChart";
+import CombinedLineChart from "../../chart_etc/CombinedChart";
 
 
 const WidgetMiddle = ({ keyword }) => {

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./community.css";
 import {useNavigate} from "react-router-dom";
-import CreatePostModal from "./CreatePostModal"; // 모달 컴포넌트 추가
+import CreatePostModal from "./CreatePostModal"; 
 
 const Community = () => {
-    const [posts, setPosts] = useState([]); // 게시물 데이터 저장 및 관리 데이터
-    const [category, setCategory] = useState("ALL"); // 선택된 카테고리 (초기값(ALL)
-    const [searchTerm, setSearchTerm] = useState(""); // 검색어 (초기값 빈 문자열)
-    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
+    const [posts, setPosts] = useState([]); 
+    const [category, setCategory] = useState("ALL"); 
+    const [searchTerm, setSearchTerm] = useState(""); 
+    const [isModalOpen, setIsModalOpen] = useState(false); 
     const navigate = useNavigate();
 
-    // 게시물 데이터 가져오기
+   
     const fetchPosts = async () => {
         try {
             const response = await axios.get(
@@ -29,7 +29,7 @@ const Community = () => {
         fetchPosts();
     }, [category]);
 
-    // 검색 기능
+
     const handleSearch = async () => {
         if (!searchTerm.trim()) {
             alert("검색어를 입력하세요!");
@@ -45,14 +45,13 @@ const Community = () => {
         }
     };
 
-    // Enter 키를 눌렀을 때 검색 실행
+  
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
             handleSearch();
         }
     };
 
-    // 모달 열기/닫기
         const handleOpenModal = () => {
             const userId = localStorage.getItem("userid");
             if (!userId) {
