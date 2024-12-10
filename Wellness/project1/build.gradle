@@ -40,6 +40,14 @@ dependencies {
 
 	// ObjectMapper
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
+
+	// jsoup -> 안됨ㅜ
+	implementation 'org.jsoup:jsoup:1.18.3'
+
+	// selenium
+	implementation 'org.seleniumhq.selenium:selenium-java:4.6.0'
+
 }
 
 tasks.named('test') {

@@ -25,25 +25,11 @@
     position: relative;
 }
 
-.bubble-chart {
-    width: 100%; 
-    height: 100%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    display: block; /* 레이아웃 안정성을 위해 block 설정 */
-    background-color: #1d1d1d;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+.word-cloud-chart {
+    width: 100%;
+    height: 300px;
+    max-width: 300px;
+    
 }
 
-/* SVG 스타일 */
-/* .relatedList svg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; 
-    height: 100%; 
-    background-color: #C5EB64;
-} */
 

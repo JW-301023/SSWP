@@ -11,7 +11,7 @@ import Community from "./pages/Community/Community";
 import CreatePostModal from "./pages/Community/CreatePostModal";
 import PostDetail from "./pages/Community/PostDetail";
 import EditPost from "./pages/Community/EditPost";
-import Favorites from './pages/Favorite/Favorites';
+import Reports from "./pages/reports/Reports";
 
 // import Login from './pages/user/Login';
 import './app.css';
@@ -36,8 +36,8 @@ function App() {
             <Route path="/login" element={<LoginSlider />} />
             <Route path="/users" element={<PrivateRoute><UserInfo /></PrivateRoute>} />
 
-            {/* Favorite */}
-            {/* <Route path="/favorites" element={<Favorites />} /> */}
+            {/* Reports */}
+            <Route path="/articles" element={<Reports />} />
 
             {/* Community */}
             <Route path="/community" element={<Community/>} />

@@ -17,7 +17,7 @@ const Sidebar = () => {
         { name: "Home", path: "/", icon: <TbBrandGoogleHome className="sidebarIcon" /> },
         { name: "Dashboard", path: "/dashboard", icon: <TbLayoutDashboard className="sidebarIcon" /> },
         { name: "Users", path: "/users", icon: <CgUser className="sidebarIcon" /> },
-        { name: "Favorites", path: "/favorites", icon: <MdOutlineBookmarkBorder className="sidebarIcon" /> },
+        { name: "Reports", path: "/articles", icon: <MdOutlineBookmarkBorder className="sidebarIcon" /> },
         { name: "Community", path: "/community", icon: <IoChatbubblesOutline className="sidebarIcon" /> },
     ];
 
