@@ -24,6 +24,9 @@ const GenderChart = ({ data }) => {
     const femaleAverage =
         data.female.reduce((sum, item) => sum + (item.ratio || 0), 0) / data.female.length;
 
+    
+        
+
     // 차트 데이터
     const chartData = {
         labels: ["남성", "여성"], // 범례 설정

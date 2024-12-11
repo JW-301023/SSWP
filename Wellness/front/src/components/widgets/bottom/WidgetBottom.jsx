@@ -33,7 +33,7 @@ const WidgetBottom = ({ keyword }) => {
 
     // 유튜브 플레이어 옵션
     const opts = {
-        width: "100%",
+        width: "250",
         height: "150",
         playerVars: { 
             autoplay: 0,
@@ -46,7 +46,7 @@ const WidgetBottom = ({ keyword }) => {
         dots: true,
         infinite: true,
         speed: 500,
-        sliderToShow: 2,
+        sliderToShow: 1,
         sliderToScroll: 2,
         arrows: true
     };

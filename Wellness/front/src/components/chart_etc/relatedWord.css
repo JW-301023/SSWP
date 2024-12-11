@@ -1,9 +1,7 @@
 .related-word {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    flex: 2;
     width: 100%;
-    height: auto;
+    height: 60%;
 }
 
 .related-word-title {
@@ -16,20 +14,24 @@
 }
 
 .related-list {
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     position: relative;
+    border-radius: 30px;
+    background-color: #1d1d1d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .word-cloud-chart {
     width: 100%;
-    height: 300px;
-    max-width: 300px;
-    
+    height: 100%; 
+    display: block; 
+    overflow: auto;
+    margin: 0 auto;
 }
 
 

@@ -19,7 +19,7 @@ const Topbar = () => {
     const handleSearch = async (e) => {
         e.preventDefault();
 
-        console.log("검색어: ", searchTerm) // 오류 확인
+        // console.log("검색어: ", searchTerm)
 
         // 검색어가 입력되지 않은 경우 처리
         if (!searchTerm || searchTerm.trim() === "") {
@@ -51,7 +51,14 @@ const Topbar = () => {
 
     const handleNotificationClick = async (id, postId) => {
         try {
-            await axios.put(`/api/notifications/${id}`);
+            await axios.put(`/api/notifications/${id}`);  // 알림 아이디 
+
+            // 읽음 처리 후, 알림 목록 업데이트
+            setNotifications((prevNotifications) =>
+                prevNotifications.filter((notif) => notif.id !== id)
+            );
+
+            // 게시물 화면으로 이동
             window.location.href = `/community/${postId}`;
         } catch (error) {
             console.error("알림 읽음 처리 실패:", error);
@@ -81,13 +88,18 @@ const Topbar = () => {
                             <div className="notification-dropdown">
                                 {notifications.length > 0 ? (
                                     notifications.map((notif) => (
-                                        <div key={notif.id} onClick={() => handleNotificationClick(notif.post_id)}>
-                                            <p>{notif.content}</p>
-                                            <span>{new Date(notif.created_at).toLocaleString()}</span>
+                                        <div key={notif.id} className="notification-item">
+                                            <p className="notification-content">{notif.content}</p>
+                                            <button
+                                                className="notification-button"
+                                                onClick={() => handleNotificationClick(notif.id, notif.post_id)}
+                                            >
+                                                보러가기
+                                            </button>
                                         </div>
                                     ))
                                 ) : (
-                                    <p>알림이 없습니다.</p>
+                                    <p className="no-notifications">알림이 없습니다.</p>
                                 )}
                             </div>
                         )}

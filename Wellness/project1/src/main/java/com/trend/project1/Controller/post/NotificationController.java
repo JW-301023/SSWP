@@ -1,5 +1,6 @@
 package com.trend.project1.Controller.post;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +29,18 @@ public class NotificationController {
     // 알림 클릭했을 때 is_read True로 변경
     @PutMapping("/notifications/{id}")
     public ResponseEntity<String> markNotificationAsRead(@PathVariable Long id) {
-        String sql = "UPDATE notifications SET is_read = TRUE WHERE id = ?";
-        jdbcTemplate.update(sql, id);
-        return ResponseEntity.ok("알림 읽음 처리 완료");
+        try {
+            String sql = "UPDATE notifications SET is_read = TRUE WHERE id = ?";
+            int rowsUpdated = jdbcTemplate.update(sql, id);
+
+            if (rowsUpdated > 0) {
+                return ResponseEntity.ok("알림 읽음 처리 완료");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("해당 알림을 찾을 수 없습니다.");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("알림 읽음 처리 중 오류가 발생했습니다.");
+        }
     }
 
 }

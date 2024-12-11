@@ -4,26 +4,24 @@ import './home.css'
 export default function Home() {
     return (
         <div className="home">
-            <h1 className="home-description"> 
-                Do you know <br/> Wellness Trend ?
-            </h1>
             <div className="home-top-container">
-                <p>여긴 탑</p>
-                {/* <div className="content-box summary">
-                    <p className="content-title">summary</p>
-                    <div className="content-detail">
-
-                    </div>
+                <div className="top-image" />
+                <h1>Wellness</h1>
+                <div className="home-description">
+                    <p>Do you know wellness<br/>Do you know wellness</p>
+                    <p>Do you know wellness trends<br/>Do you know wellness trends</p>
                 </div>
-                <div className="content-box news">
-                    <p className="content-title">news</p>
-                    <div className="content-detail">
-
-                    </div>
-                </div> */}
             </div>
             <div className="home-middle-container">
-                <p>여긴 미들</p>
+                <div className="image-wrapper">
+                    <img src="/img1.jpeg" />
+                </div>
+                <div className="image-wrapper">
+                    <img src="/img2.png" />
+                </div>
+                <div className="image-wrapper">
+                    <img src="/img3.jpg" />
+                </div>
             </div>
             <div className="home-bottom-container">
                 <p>여긴 바텀</p>

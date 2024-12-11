@@ -51,15 +51,6 @@ export default function Dashboard() {
             <div className="col-container">
                 <RelatedWord keyword={keyword} />
                 <WidgetBottom keyword={keyword}/>
-                {/* <div className="widgets-container">
-                    <FeaturedInfo keyword={keyword} />
-                    <WidgetRow keyword={keyword} />
-                </div> */}
-            {/* </div>
-            <div className="footer-container">
-                <div className="row-container">
-                    <WidgetCol keyword={keyword} />
-                </div> */}
             </div>
         </div>
     )

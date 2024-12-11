@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './reports.css';
 
+import PuffLoader from "react-spinners/PuffLoader";
+
 const Reports = () => {
   const [articles, setArticles] = useState([]);
 
@@ -13,6 +15,23 @@ const Reports = () => {
     })
     .catch((error) => console.error("Error fetching articles:", error));
   }, []);
+
+
+  if (articles.length === 0) {
+    return (
+      <div className="reports-empty">
+        <div className="reports-empty-description">
+            <PuffLoader size={80}/>
+            <h1>서비스 준비중입니다.</h1>
+            <p>현재 데이터를 준비 중입니다.<br />추후에 더 나은 서비스로 찾아뵙겠습니다.</p>
+
+            <div className="work-description">
+              <p>작업 일시: 2024.12.12 ~ 2024.12.31</p>
+            </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="reports">

@@ -18,7 +18,7 @@ const RelatedWord = ({ keyword }) => {
             const response = await axios.get(`/api/related-keywords?keyword=${keyword}`);
             const data = response.data.map((word, index) => ({
                 text: word,
-                weight: Math.max(10, (20 - index) * 5), // 가중치 설정
+                weight: Math.max(10, (10 - index) * 5), // 가중치 설정
             }));
             setSuggestions(data);
         } catch (error) {
@@ -41,7 +41,7 @@ const RelatedWord = ({ keyword }) => {
         const height = canvasRef.current.offsetHeight;
 
         // 글씨 크기 동적 계산
-        const baseFontSize = Math.min(width, height) / 15;
+        const baseFontSize = Math.min(width, height) / 20;
 
         ctx.chart = new Chart(ctx, {
             type: "wordCloud",
@@ -62,18 +62,47 @@ const RelatedWord = ({ keyword }) => {
                     }
                 },
                 layout: {
-                    padding: 20,
+                    padding: 0,
                 },
                 elements: {
                     word: {
                         fontFamily: "Arial",
                         fontSize: (context) => {
-                            const baseSize = context.raw * baseFontSize * 0.005; // 비례 크기 계산
-                            return Math.min(30, Math.max(10, baseSize)); // 최소 10px, 최대 30px
+                            const baseSize = context.raw * baseFontSize * 0.0025; 
+                            return Math.min(5, Math.max(1, baseSize)); // 최소 5px, 최대 10px;
                         },
-                        rotate: () => (Math.random() < 0.5 ? 0 : 90),
-                        color: () =>
-                            `hsl(${Math.random() * 360}, 70%, 50%)`
+                        rotate: () => (Math.random() < 0.3 ? 0 : 45),
+                        color: () => {
+                            const colors = [
+                                "#3498db", // 파란색
+                                "#e74c3c", // 빨간색
+                                "#2ecc71", // 녹색
+                                "#9b59b6", // 보라색
+                                "#f1c40f"  // 노란색
+                            ];
+                            return colors[Math.floor(Math.random() * colors.length)];
+                        },
+                        padding: 1, 
+                        borderRadius: 0, 
+                        weightFactor: 1.5
+                    }
+                },
+                layout: {
+                    padding: 0, // 전체 레이아웃 패딩 최소화
+                    tension: 0.3 // 키워드 간 균형감을 위한 배치 설정
+                },
+                animation: {
+                    duration: 1000, // 애니메이션 지속 시간
+                    easing: "easeOutQuart", // 부드러운 애니메이션
+                },
+                plugins: {
+                    legend: {
+                        display: false, // 범례 숨김
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `키워드: ${context.label}, 점수: ${context.raw}`
+                        }
                     }
                 }
             }

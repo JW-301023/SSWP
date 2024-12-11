@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate, useParams, useLocation} from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./postdetail.css";
 import Comments from "./Comments";
@@ -20,6 +20,11 @@ const PostDetail = () => {
 
     useEffect(() => {
         const fetchPost = async () => {
+            if (!id) {
+                console.error("게시물 ID가 없습니다.");
+                return;
+            }
+
             try {
                 // 조회수 증가 요청
                 await axios.post(`/api/posts/${id}/view`, {});
@@ -35,6 +40,8 @@ const PostDetail = () => {
                 console.error("게시글 불러오기 실패:", error);
             }
         };
+
+        // console.log("현재 게시물 ID:", id);
         fetchPost();
     }, [id]);
 
@@ -92,16 +99,6 @@ const PostDetail = () => {
             <div className="post-date">
                 날짜: {post.createdAt}
             </div>
-
-            {/* 제목 및 작성자, 생성일 정보 */}
-            {/*<div className="post-header">*/}
-            {/*    <h1>{post.title}</h1>*/}
-            {/*    <div className="post-meta">*/}
-            {/*        <span>작성자: {post.name}</span>*/}
-            {/*        <span>생성일: {post.createdAt}</span>*/}
-            {/*        <span>조회수: {post.views}</span>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
 
             <button className="like-button" onClick={handleLike}>
                 ♥️ {post.likes}

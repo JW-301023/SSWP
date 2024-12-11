@@ -69,3 +69,14 @@ body {
   font-style: normal;
 }
 
+
+@font-face {
+  font-family: "CoolveticaRg-Bold";
+  src: url("./assets/fonts/CoolveticaRg-Bold.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
